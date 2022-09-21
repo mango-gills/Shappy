@@ -5,7 +5,7 @@ Project after learning the basics of React and getting data from an API.
 
 ## Tech Stack
 
-**Frontend:** React\
+**Frontend:** React, TailwindCSS
 **API:** [Fake Store Api](https://fakestoreapi.com/)
 
 ## Demo
