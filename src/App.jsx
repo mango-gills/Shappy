@@ -1,59 +1,32 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
-import Categories from "./components/Categories";
-import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import FeaturedProductsGallery from "./components/FeaturedProductsGallery";
-import axios from "axios";
 
-const homePage = () => {
-  const [products, setProducts] = useState([]);
-  const [randomProducts, setRandomProducts] = useState([]);
+import {
+  JosefinSansBold,
+  JosefinSansLight,
+  JosefinSansRegular,
+  JosefinSansSemiBold,
+  JosefinSansThin,
+} from "./assets/fonts";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-  useEffect(() => {
-    getAllProducts();
-  }, []);
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import ProductPage from "./pages/ProductPage";
+import Signup from "./pages/Signup";
 
-  const getAllProducts = async () => {
-    const { data } = await axios.get("https://fakestoreapi.com/products");
-    setProducts(data);
-    getRandomProduct(data);
-  };
-
-  const getRandomProduct = (products) => {
-    const keys = Object.keys(products);
-    const randomized = [];
-    let prop = 0;
-    const ids = [];
-
-    for (let i = 0; i < 8; i++) {
-      prop = keys[Math.floor(Math.random() * keys.length)];
-      if (ids.includes(prop)) {
-        prop = keys[Math.floor(Math.random() * keys.length)];
-        i -= 1;
-      } else {
-        ids.push(prop);
-      }
-    }
-    ids.map((id) => {
-      randomized.push(products[id]);
-    });
-
-    setRandomProducts(randomized);
-  };
-
+function App() {
   return (
-    <main>
-      <Navbar />
-      <div className="mx-auto w-full sm:w-[70%] md:lg:w-[60%]">
-        <Hero />
-        <FeaturedProductsGallery randomProducts={randomProducts} />
-        <Categories />
-      </div>
-      <Footer />
-    </main>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
+    </div>
   );
-};
+}
 
-export default homePage;
+export default App;
