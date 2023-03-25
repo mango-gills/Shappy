@@ -8,7 +8,7 @@ Project after learning the basics of React and getting data from an API.
 **Frontend:** React, TailwindCSS, Added SwiperJS \
 **API:** [Fake Store Api](https://fakestoreapi.com/)
 
-## Demo
+## Demo - old version is currently deployed.
 
 Click the link below.\
 [Shappy](https://shappy.vercel.app/)
