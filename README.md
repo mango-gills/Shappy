@@ -1,5 +1,5 @@
 # Shappy - Ecommerce Website
-# - Currently updating this project - \
+## - Currently updating this project -
 Shappy is a simple ecommerce website.\
 Project after learning the basics of React and getting data from an API.
 
