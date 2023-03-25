@@ -5,7 +5,7 @@ Project after learning the basics of React and getting data from an API.
 
 ## Tech Stack
 
-**Frontend:** React, TailwindCSS \
+**Frontend:** React, TailwindCSS, Added SwiperJS \
 **API:** [Fake Store Api](https://fakestoreapi.com/)
 
 ## Demo
