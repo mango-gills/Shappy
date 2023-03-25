@@ -26,7 +26,9 @@ const Navbar = () => {
           <div className="flex items-center space-x-6">
             <div className="flex space-x-2">
               <Heart color="#808080" weight="fill" size={25} />
-              <ShoppingCartSimple size={25} />
+              <Link to={"/cart"}>
+                <ShoppingCartSimple size={25} />
+              </Link>
             </div>
 
             <div className="flex space-x-1">

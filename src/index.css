@@ -32,6 +32,6 @@
   font-weight: bold;
 }
 
-.App {
-  /* font-family: "JosefinSansRegular"; */
+.swiper > .swiper-pagination {
+  bottom: 0px;
 }
