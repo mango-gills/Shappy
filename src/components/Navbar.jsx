@@ -12,17 +12,6 @@ const Navbar = () => {
             <h1 className="font-josefinBold text-3xl text-black">Shappy</h1>
           </Link>
 
-          <div className="flex bg-neutral-200 justify-between w-[35%]">
-            <input
-              className="w-[90%] bg-transparent focus:outline-none ml-2 placeholder:text-sm"
-              type="text"
-              placeholder="Search"
-            />
-            <div className="bg-[#A6A0A0] p-1 px-2 cursor-pointer">
-              <MagnifyingGlass color="white" size={22} />
-            </div>
-          </div>
-
           <div className="flex items-center space-x-6">
             <div className="flex space-x-2">
               <Heart color="#808080" weight="fill" size={25} />
@@ -43,7 +32,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div>
+        <div className="flex justify-between items-center">
           <ul className="flex space-x-8">
             <li>All</li>
             <li>Electronics</li>
@@ -51,6 +40,17 @@ const Navbar = () => {
             <li>Men's Clothing</li>
             <li>Women's Clothing</li>
           </ul>
+
+          <div className="flex bg-neutral-200 justify-between w-[35%]">
+            <input
+              className="w-[90%] bg-transparent focus:outline-none ml-2 placeholder:text-sm"
+              type="text"
+              placeholder="Search"
+            />
+            <div className="bg-[#A6A0A0] p-1 px-2 cursor-pointer">
+              <MagnifyingGlass color="white" size={22} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
