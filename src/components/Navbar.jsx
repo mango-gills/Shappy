@@ -1,15 +1,28 @@
-import { Heart, MagnifyingGlass, ShoppingCartSimple } from "phosphor-react";
+import {
+  Heart,
+  MagnifyingGlass,
+  ShoppingBagOpen,
+  ShoppingCartSimple,
+} from "phosphor-react";
 
 import { Link } from "react-router-dom";
 import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="w-full border-b-2 border-neutral-300 drop-shadow-sm">
-      <div className=" pt-6 pb-3 w-3/4 lg:w-3/5 mx-auto text-[#7A7A7A]">
+    <div className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0">
+      <div className="pt-6 pb-3 w-full lg:w-3/5 mx-auto text-[#7A7A7A]">
         <div className="flex items-center justify-between border-b-[1px] border-neutral-400 pb-2 mb-2">
-          <Link to={"/"}>
-            <h1 className="font-josefinBold text-3xl text-black">Shappy</h1>
+          <Link to={"/"} className="flex items-center">
+            <ShoppingBagOpen
+              color="#000000"
+              weight="duotone"
+              size={50}
+              className="mr-1"
+            />
+            <h1 className="font-josefinBold text-3xl text-black mt-1">
+              Shappy
+            </h1>
           </Link>
 
           <div className="flex items-center space-x-6">
