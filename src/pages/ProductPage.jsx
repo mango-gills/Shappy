@@ -30,7 +30,7 @@ const ProductPage = () => {
     <div>
       <Navbar />
       <div className="grid place-items-center mt-20 max-w-full font-josefinRegular">
-        <div className="bg-[#DFDFDF] w-3/5 h-[600px] grid grid-cols-2 drop-shadow-md">
+        <div className="bg-[#DFDFDF] max-w-[900px] h-[600px] grid grid-cols-2 drop-shadow-md">
           <div className="h-full w-full overflow-hidden flex justify-center items-center">
             <img
               src={image}
