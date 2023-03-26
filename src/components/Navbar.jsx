@@ -8,7 +8,20 @@ import {
 import { Link } from "react-router-dom";
 import React from "react";
 
+import { UserAuth } from "../store/AuthContext";
+
 const Navbar = () => {
+  const { user, logout } = UserAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      window.location.reload();
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <div className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0">
       <div className="pt-6 pb-3 w-full lg:w-3/5 mx-auto text-[#7A7A7A]">
@@ -33,15 +46,24 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="flex space-x-1">
-              <Link to={"/login"}>
-                <p>Login</p>
-              </Link>
-              <p>|</p>
-              <Link to={"/signup"}>
-                <p>Signup</p>
-              </Link>
-            </div>
+            {user ? (
+              <div className="flex space-x-2">
+                <p>{user.email}</p>
+                <p className="cursor-pointer" onClick={handleLogout}>
+                  logout
+                </p>
+              </div>
+            ) : (
+              <div className="flex space-x-1">
+                <Link to={"/login"}>
+                  <p>Login</p>
+                </Link>
+                <p>|</p>
+                <Link to={"/signup"}>
+                  <p>Signup</p>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
