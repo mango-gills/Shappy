@@ -13,6 +13,8 @@ import "swiper/css/pagination";
 const FeaturedProductsComponent = () => {
   const { featuredList } = useContext(FeaturedProductsContext);
 
+  // console.log(import.meta.env.VITE_CONNECT_FIRESTORE);
+
   return (
     <div>
       <Swiper
