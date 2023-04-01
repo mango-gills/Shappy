@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0">
-      <div className="pt-6 pb-3 w-full lg:w-3/5 mx-auto text-[#7A7A7A]">
+      <div className="pt-6 pb-3 w-full xl:w-3/4 xxl:w-3/5 mx-auto text-[#7A7A7A]">
         <div className="flex items-center justify-between border-b-[1px] border-neutral-400 pb-2 mb-2">
           <Link to={"/"} className="flex items-center">
             <ShoppingBagOpen
@@ -55,11 +55,11 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex space-x-1">
-                <Link to={"/login"}>
+                <Link to={"/login"} className="hover:text-black duration-150">
                   <p>Login</p>
                 </Link>
                 <p>|</p>
-                <Link to={"/signup"}>
+                <Link to={"/signup"} className="hover:text-black duration-150">
                   <p>Signup</p>
                 </Link>
               </div>
@@ -69,21 +69,24 @@ const Navbar = () => {
 
         <div className="flex justify-between items-center">
           <ul className="flex space-x-8">
-            <li>All</li>
-            <li>Electronics</li>
-            <li>Jewelry</li>
-            <li>Men's Clothing</li>
-            <li>Women's Clothing</li>
+            <li className="cursor-pointer hover:text-black">All</li>
+            <li className="cursor-pointer hover:text-black">Electronics</li>
+            <li className="cursor-pointer hover:text-black">Jewelry</li>
+            <li className="cursor-pointer hover:text-black">Men's Clothing</li>
+            <li className="cursor-pointer hover:text-black">
+              Women's Clothing
+            </li>
           </ul>
 
-          <div className="flex bg-neutral-200 justify-between w-[35%]">
+          {/* Search bar */}
+          <div className="flex bg-neutral-200 justify-between w-[35%] rounded-md overflow-hidden">
             <input
-              className="w-[90%] bg-transparent focus:outline-none ml-2 placeholder:text-sm"
+              className="w-[90%] bg-transparent focus:outline-none ml-2 placeholder:text-sm px-2"
               type="text"
               placeholder="Search"
             />
-            <div className="bg-[#A6A0A0] p-1 px-2 cursor-pointer">
-              <MagnifyingGlass color="white" size={22} />
+            <div className="bg-[#A6A0A0] py-2 px-3 cursor-pointer hover:bg-black duration-150 transition">
+              <MagnifyingGlass color="white" size={20} />
             </div>
           </div>
         </div>
