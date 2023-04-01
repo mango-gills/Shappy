@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Heart } from "phosphor-react";
 import { useParams } from "react-router-dom";
+import AddToCart from "./AddToCart";
 
 const ProductPageItemDetails = () => {
   const [item, setItem] = useState([]);
@@ -41,9 +42,7 @@ const ProductPageItemDetails = () => {
           </div>
 
           <div className="font-josefinRegular text-lg items-end space-y-4">
-            <button className="bg-[#2b2b2b] text-white px-8 py-2 w-full rounded-sm">
-              Add to Cart
-            </button>
+            <AddToCart item={item} />
             <button className="text-[#2b2b2b] border-[1px] border-gray-400 px-8 py-2 w-full rounded-sm">
               Save to Wishlist
             </button>
