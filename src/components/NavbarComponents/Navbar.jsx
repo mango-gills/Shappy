@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import React from "react";
 
-import { UserAuth } from "../store/AuthContext";
+import { UserAuth } from "../../store/AuthContext";
 
 const Navbar = () => {
   const { user, logout } = UserAuth();
@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0">
-      <div className="pt-6 pb-3 w-full xl:w-3/4 xxl:w-3/5 mx-auto text-[#7A7A7A]">
+      <div className="pt-6 pb-3 w-full lg:max-w-[1000px] xl:max-w-[1100px] mx-auto text-[#7A7A7A]">
         <div className="flex items-center justify-between border-b-[1px] border-neutral-400 pb-2 mb-2">
           <Link to={"/"} className="flex items-center">
             <ShoppingBagOpen
