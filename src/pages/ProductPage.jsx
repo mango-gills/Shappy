@@ -6,7 +6,6 @@ import ProductPageItemDetails from "../components/ProductPageComponents/ProductP
 const ProductPage = () => {
   return (
     <>
-      <Navbar />
       <ProductPageItemDetails />
     </>
   );

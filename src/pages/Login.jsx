@@ -27,7 +27,7 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-white grid place-items-center ">
+    <div className="w-full h-screen bg-white flex justify-center mt-5">
       <div className="bg-[#F8F9FA] w-[850px] h-[500px] grid grid-cols-5 select-none drop-shadow-md">
         <div
           className="bg-blue-300 col-span-3 bg-cover bg-center bg-no-repeat"

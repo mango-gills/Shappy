@@ -44,7 +44,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-white grid place-items-center ">
+    <div className="w-full h-screen bg-white flex justify-center items-start mt-5">
       <div className="bg-[#F8F9FA] w-[850px] grid grid-cols-6 select-none drop-shadow-md">
         <div
           className="bg-blue-300 col-span-3 bg-cover bg-center bg-no-repeat"
