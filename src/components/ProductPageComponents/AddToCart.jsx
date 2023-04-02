@@ -1,30 +1,34 @@
 import React, { useState } from "react";
 
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db, auth } from "../../firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  getDocs,
+  doc,
+  increment,
+  setDoc,
+} from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 
-const AddToCart = ({ item }) => {
-  const [userId, setUserId] = useState("");
+const AddToCart = ({ item, userId }) => {
   const navigate = useNavigate();
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUserId(user.uid);
-    } else {
-      setUserId("");
-    }
-  });
+  console.log(item);
 
   const handleAddToCart = async () => {
-    if (userId == "") {
-      navigate("/login");
-    } else {
-      await addDoc(collection(db, "user_cart", userId, "cart_items"), {
-        itemId: item.id,
+    if (userId !== "") {
+      await addDoc(collection(db, "cart"), {
+        item: { ...item },
+        user_id: userId,
+        quantity: increment(1),
         timestamp: serverTimestamp(),
       });
+
+      console.log("Item was added to cart");
+    } else {
+      navigate("/login");
     }
   };
 

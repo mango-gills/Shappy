@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Heart } from "phosphor-react";
 import { useParams } from "react-router-dom";
 import AddToCart from "./AddToCart";
+import { db, auth } from "../../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 const ProductPageItemDetails = () => {
   const [item, setItem] = useState([]);
+  const [userId, setUserId] = useState("");
+
   const params = useParams();
   const { title, image, price, id, description, category } = item;
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUserId(user.uid);
+    } else {
+      setUserId("");
+    }
+  });
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -42,7 +53,7 @@ const ProductPageItemDetails = () => {
           </div>
 
           <div className="font-josefinRegular text-lg items-end space-y-4">
-            <AddToCart item={item} />
+            <AddToCart item={item} userId={userId} />
             <button className="text-[#2b2b2b] border-[1px] border-gray-400 px-8 py-2 w-full rounded-sm">
               Save to Wishlist
             </button>
