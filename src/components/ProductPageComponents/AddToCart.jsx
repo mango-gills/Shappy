@@ -11,11 +11,11 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../store/AuthContext";
 
-const AddToCart = ({ item, userId }) => {
+const AddToCart = ({ item }) => {
   const navigate = useNavigate();
-
-  console.log(item);
+  const { userId } = UserAuth();
 
   const handleAddToCart = async () => {
     if (userId !== "") {

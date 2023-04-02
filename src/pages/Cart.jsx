@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import Navbar from "../components/NavbarComponents/Navbar";
-import { X, XSquare } from "phosphor-react";
+import { X } from "phosphor-react";
+import { UserAuth } from "../store/AuthContext";
 
 const Cart = () => {
   const [cartData, setCartData] = useState([]);
+  const { userId } = UserAuth();
 
   useEffect(() => {
     // (async () => {
     //   const snapshots = await getDocs(collection(db, "cart"));
-
     //   const docs = snapshots.docs.map((doc) => {
     //     const data = doc.data();
     //     data.id = doc.id;
@@ -19,7 +27,14 @@ const Cart = () => {
     //   setCartData(docs);
     // })();
 
-    onSnapshot(collection(db, "cart"), (snapshot) =>
+    const cartRef = collection(db, "cart");
+    const cartQuery = query(
+      cartRef,
+      where("user_id", "==", userId),
+      orderBy("timestamp")
+    );
+
+    onSnapshot(cartQuery, (snapshot) =>
       setCartData(
         snapshot.docs.map((doc) => {
           const data = doc.data();
@@ -32,7 +47,6 @@ const Cart = () => {
 
   return (
     <>
-      <Navbar />
       <div className="2xl:max-w-[1280px] mx-auto py-5 w-full px-5">
         <h1 className="mb-5 text-3xl font-josefinBold">
           Your Shopping Cart has {cartData.length} items.
@@ -63,9 +77,9 @@ const Cart = () => {
 
               <select
                 id="quantity"
-                class="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
+                className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
               >
-                <option selected value="1">
+                <option defaultValue={true} value="1">
                   1
                 </option>
                 <option value="2">2</option>
