@@ -37,9 +37,18 @@ const FeaturedImage = () => {
             style={{ backgroundImage: `url(${image6})` }}
           ></SwiperSlide>
           <SwiperSlide
-            className="w-full h-full bg-center bg-cover bg-no-repeat"
+            className="w-full h-full bg-center bg-cover bg-no-repeat px-24 pt-32"
             style={{ backgroundImage: `url(${image7})` }}
-          ></SwiperSlide>
+          >
+            <div>
+              <h1 className="text-white/90 text-6xl tracking-wider font-extrabold drop-shadow-lg select-none">
+                Limited Time Only!
+              </h1>
+              <p className="text-3xl text-black/80">
+                Discounts on Your Favorite Products
+              </p>
+            </div>
+          </SwiperSlide>
         </Swiper>
         {/* <div className="small w-full h-full grid grid-rows-2 gap-3">
           <div

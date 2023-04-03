@@ -6,6 +6,7 @@ const FeaturedProductsContext = createContext();
 const ProductProvider = ({ children }) => {
   const [productsList, setProductsList] = useState([]);
   const [featuredList, setFeaturedList] = useState([]);
+  const [bestSellers, setBestSellers] = useState([]);
 
   const fakestoreAPI = "https://fakestoreapi.com/products";
   const platziAPI = "https://api.escuelajs.co/api/v1/products";
@@ -28,6 +29,7 @@ const ProductProvider = ({ children }) => {
           .then((result) => {
             setProductsList(result);
             setFeaturedList(fyShuffle(result));
+            setBestSellers(fyShuffle(result));
           })
           .catch((error) => console.log("Something went wrong.", error));
       } catch (error) {
@@ -39,7 +41,7 @@ const ProductProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider value={{ productsList }}>
-      <FeaturedProductsContext.Provider value={{ featuredList }}>
+      <FeaturedProductsContext.Provider value={{ featuredList, bestSellers }}>
         {children}
       </FeaturedProductsContext.Provider>
     </ProductsContext.Provider>

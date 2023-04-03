@@ -1,15 +1,14 @@
-import { FeaturedProductsContext } from "../store/ProductsAPIContext";
-import React, { useState, useContext } from "react";
-
-import ProductDetails from "./ProductDetails";
+import React, { useContext, useState } from "react";
+import { FeaturedProductsContext } from "../../store/ProductsAPIContext";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 import { CaretCircleLeft, CaretCircleRight } from "phosphor-react";
+import ProductDetails from "../ProductDetails";
 
-const FeaturedProductsComponent = () => {
-  const { featuredList } = useContext(FeaturedProductsContext);
+const BestSellerComponent = () => {
+  const { bestSellers } = useContext(FeaturedProductsContext);
 
   const [swiperRef, setSwiperRef] = useState(null);
 
@@ -24,7 +23,7 @@ const FeaturedProductsComponent = () => {
   return (
     <>
       <div className="w-full mt-5 mb-3 text-lg pt-1 text-black font-JosefinSansSemiBold flex justify-between">
-        Featured Products
+        Best Sellers
         <div className="flex space-x-1">
           <CaretCircleLeft
             size={30}
@@ -38,7 +37,6 @@ const FeaturedProductsComponent = () => {
           />
         </div>
       </div>
-
       <Swiper
         slidesPerView={5}
         // spaceBetween={20}
@@ -49,7 +47,7 @@ const FeaturedProductsComponent = () => {
         onSwiper={(swiper) => setSwiperRef(swiper)}
         className="flex justify-between items-center mb-5 pb-5"
       >
-        {featuredList?.map((product) => (
+        {bestSellers?.map((product) => (
           <SwiperSlide key={product.id}>
             <ProductDetails items={product} />
           </SwiperSlide>
@@ -59,4 +57,4 @@ const FeaturedProductsComponent = () => {
   );
 };
 
-export default FeaturedProductsComponent;
+export default BestSellerComponent;
