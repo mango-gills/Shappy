@@ -6,8 +6,8 @@ const ProductDetails = ({ items }) => {
 
   return (
     <Link to={`/product/${id}`}>
-      <div className="bg-neutral-300 w-[210px] mx-auto font-josefinRegular border-[1px] border-black/10 rounded-sm cursor-pointer flex flex-col items-center hover:border-black/80 ease-in duration-150">
-        <div className="image-container my-3 w-[165px] h-[165px]">
+      <div className="w-[210px] font-josefinRegular mx-auto text-center rounded-md cursor-pointer flex flex-col items-center hover:shadow-xl ease-in duration-75 hover:scale-110">
+        <div className="image-container mt-3 mb-2 w-[170px] h-[170px]">
           <div
             className="w-[90%] h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
             style={{ backgroundImage: `url(${image})` }}
@@ -15,7 +15,7 @@ const ProductDetails = ({ items }) => {
           />
         </div>
         <div className="product-details w-full bg-white h-[85px]">
-          <div className="flex flex-col justify-between h-full pt-3 px-4 pb-1">
+          <div className="flex flex-col justify-between h-full pt-1 px-4 pb-2">
             <h2 className="font-josefinBold text-sm line-clamp-2 text-gray-700">
               {title}
             </h2>

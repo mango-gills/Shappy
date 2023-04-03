@@ -18,9 +18,9 @@ const FeaturedProductsComponent = () => {
       <Swiper
         slidesPerView={5}
         // spaceBetween={20}
-        // pagination={{
-        //   clickable: true,
-        // }}
+        pagination={{
+          clickable: true,
+        }}
         modules={[]}
         className="flex justify-between items-center mb-5 pb-5"
       >

@@ -14,7 +14,7 @@ import { Pagination, Autoplay } from "swiper";
 const FeaturedImage = () => {
   return (
     <div>
-      <div className="main-grid w-full h-[260px] xl:h-[350px] grid grid-cols-3 gap-3">
+      <div className="main-grid w-full h-[280px] xl:h-[450px] grid  gap-3">
         <Swiper
           slidesPerView={1}
           loop={true}
@@ -41,7 +41,7 @@ const FeaturedImage = () => {
             style={{ backgroundImage: `url(${image7})` }}
           ></SwiperSlide>
         </Swiper>
-        <div className="small w-full h-full grid grid-rows-2 gap-3">
+        {/* <div className="small w-full h-full grid grid-rows-2 gap-3">
           <div
             className="  bg-blue-300 w-full h-full bg-cover bg-center bg-no-repeat rounded-lg"
             style={{ backgroundImage: `url(${image1})` }}
@@ -50,7 +50,7 @@ const FeaturedImage = () => {
             className="  bg-blue-300 w-full h-full bg-cover bg-center bg-no-repeat rounded-lg"
             style={{ backgroundImage: `url(${image2})` }}
           ></div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
