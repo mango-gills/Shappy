@@ -7,14 +7,13 @@ import BestSellerComponent from "../components/BestSellersComponent/BestSellerCo
 
 const Home = () => {
   return (
-    <>
+    <main>
       <ProductProvider>
         <FeaturedImage />
         <FeaturedProducts />
-        <div className="w-full border-t-2"></div>
         <BestSellerComponent />
       </ProductProvider>
-    </>
+    </main>
   );
 };
 

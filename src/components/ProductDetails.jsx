@@ -7,7 +7,7 @@ const ProductDetails = ({ items }) => {
   return (
     <Link to={`/product/${id}`}>
       <div className="w-[210px] font-josefinRegular mx-auto text-center rounded-md cursor-pointer flex flex-col items-center hover:shadow-xl ease-in duration-75 hover:scale-110">
-        <div className="image-container mt-3 mb-2 w-[170px] h-[170px]">
+        <div className="image-container my-3 w-[170px] h-[170px]">
           <div
             className="w-[90%] h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
             style={{ backgroundImage: `url(${image})` }}

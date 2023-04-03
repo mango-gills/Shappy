@@ -23,7 +23,7 @@ const FeaturedProductsComponent = () => {
 
   return (
     <>
-      <div className="w-full mt-5 mb-3 text-lg pt-1 text-black font-JosefinSansSemiBold flex justify-between">
+      <div className="w-full mt-5 mb-3 text-lg pt-1 text-black font-JosefinSansSemiBold flex justify-between ">
         Featured Products
         <div className="flex space-x-1">
           <CaretCircleLeft
@@ -47,7 +47,7 @@ const FeaturedProductsComponent = () => {
         }}
         modules={[]}
         onSwiper={(swiper) => setSwiperRef(swiper)}
-        className="flex justify-between items-center mb-5 pb-5"
+        className="flex justify-between items-center mb-5 py-5 bg-white"
       >
         {featuredList?.map((product) => (
           <SwiperSlide key={product.id}>

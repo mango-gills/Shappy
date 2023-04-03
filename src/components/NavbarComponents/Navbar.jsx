@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0">
+    <nav className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0">
       <div className="pt-6 pb-3 w-full lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px] mx-auto text-[#7A7A7A]">
         <div className="flex items-center justify-between border-b-[1px] border-neutral-400 pb-2 mb-2">
           <Link to={"/"} className="flex items-center">
@@ -91,7 +91,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

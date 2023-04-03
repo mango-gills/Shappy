@@ -45,7 +45,7 @@ const BestSellerComponent = () => {
         }}
         modules={[]}
         onSwiper={(swiper) => setSwiperRef(swiper)}
-        className="flex justify-between items-center mb-5 pb-5"
+        className="flex justify-between items-center mb-5 py-5 bg-white"
       >
         {bestSellers?.map((product) => (
           <SwiperSlide key={product.id}>
