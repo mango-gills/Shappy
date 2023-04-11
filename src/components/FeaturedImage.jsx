@@ -1,6 +1,4 @@
 import React from "react";
-import image1 from "../assets/image1.jpg";
-import image2 from "../assets/image2.jpg";
 import image3 from "../assets/image3.jpg";
 import image6 from "../assets/image6.jpg";
 import image7 from "../assets/image7.jpg";
@@ -14,7 +12,7 @@ import { Pagination, Autoplay } from "swiper";
 const FeaturedImage = () => {
   return (
     <div>
-      <div className="main-grid w-full h-[280px] xl:h-[450px] grid  gap-3">
+      <div className="main-grid w-full h-[200px] sm:h-[280px] md:h-[380px] xl:h-[450px] grid  gap-3">
         <Swiper
           slidesPerView={1}
           loop={true}

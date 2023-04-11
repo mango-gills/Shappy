@@ -1,12 +1,5 @@
 import "./App.css";
 
-import {
-  JosefinSansBold,
-  JosefinSansLight,
-  JosefinSansRegular,
-  JosefinSansSemiBold,
-  JosefinSansThin,
-} from "./assets/fonts";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -16,22 +9,25 @@ import Signup from "./pages/Signup";
 import Cart from "./pages/Cart";
 import { AuthContextProvider } from "./store/AuthContext";
 import Layout from "./layout/Layout";
+import { ResizeHandlerProvider } from "./store/ResizeHandlerProvider";
 
 function App() {
   return (
     <div className="App">
       <AuthContextProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/product/:id" element={<ProductPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-          </Layout>
-        </Router>
+        <ResizeHandlerProvider>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/product/:id" element={<ProductPage />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+            </Layout>
+          </Router>
+        </ResizeHandlerProvider>
       </AuthContextProvider>
     </div>
   );

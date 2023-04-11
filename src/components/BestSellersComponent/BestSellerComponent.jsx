@@ -6,9 +6,11 @@ import "swiper/swiper-bundle.min.css";
 
 import { CaretCircleLeft, CaretCircleRight } from "phosphor-react";
 import ProductDetails from "../ProductDetails";
+import { ResizeHandler } from "../../store/ResizeHandlerProvider";
 
 const BestSellerComponent = () => {
   const { bestSellers } = useContext(FeaturedProductsContext);
+  const { isMobile } = ResizeHandler();
 
   const [swiperRef, setSwiperRef] = useState(null);
 
@@ -38,7 +40,7 @@ const BestSellerComponent = () => {
         </div>
       </div>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={isMobile ? 2 : 5}
         // spaceBetween={20}
         pagination={{
           clickable: true,
