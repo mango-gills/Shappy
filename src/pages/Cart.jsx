@@ -9,6 +9,9 @@ const Cart = () => {
 
   totalPayment = cartData.reduce((total, cart) => cart.item.price + total, 0);
 
+  if (totalPayment > 1000) shippingFee = 15;
+  if (totalPayment > 1500) shippingFee = 20;
+
   return (
     <>
       <div className="2xl:max-w-[1280px] mx-auto py-5 w-full px-5">
@@ -36,7 +39,7 @@ const Cart = () => {
 
               <div className="text-xl flex justify-between">
                 <h2>Shipping:</h2>
-                <p>FREE</p>
+                <p>{shippingFee <= 0 ? "FREE" : `$${shippingFee}.00`}</p>
               </div>
 
               <div className="text-xl flex justify-between font-bold border-t-[1px] border-black/90 pt-2">
