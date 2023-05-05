@@ -1,20 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Cart from "./pages/Cart";
-import PageNotFound from "./pages/PageNotFound";
-import ProductPage from "./pages/ProductPage";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './index.css'
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/productpage/:productID" element={<ProductPage />} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
-);
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)

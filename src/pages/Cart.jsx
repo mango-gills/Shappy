@@ -1,94 +1,83 @@
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import React, { useState } from "react";
+import {
+  collection,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { X } from "phosphor-react";
+import { UserAuth } from "../store/AuthContext";
 
 const Cart = () => {
-  const [total, setTotal] = useState();
-  const [shoppingCart, setShoppingCart] = useState([]);
-  const [selectValue, setSelectValue] = useState(1);
+  const [cartData, setCartData] = useState([]);
+  const { userId } = UserAuth();
 
-  useEffect(() => {
-    getCartData();
-  }, []);
+  const cartRef = collection(db, "cart");
+  const cartQuery = query(
+    cartRef,
+    where("user_id", "==", userId),
+    orderBy("timestamp")
+  );
 
-  const cartData = [];
-  let subTotal = 0;
-
-  const getCartData = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-      cartData[i] = JSON.parse(localStorage.getItem(`${i}`));
-    }
-    setShoppingCart(cartData);
-    getTotalPrice(cartData);
-  };
-
-  const getTotalPrice = (data) => {
-    data.forEach((value) => {
-      subTotal += value.price * value.quantity;
+  onSnapshot(cartQuery, (snapshot) => {
+    const cart = [];
+    snapshot.docs.forEach((doc) => {
+      cart.push({ ...doc.data(), id: doc.id });
     });
-    setTotal(subTotal);
-  };
-
-  const handleChange = (e) => {
-    setSelectValue(e.target.value);
-  };
-
-  const renderElement = () => {
-    if (shoppingCart.length == 0) {
-      return <h1>Your cart is empty</h1>;
-    } else {
-      return shoppingCart.map((item) => (
-        <div
-          className="mx-auto flex h-full w-[18rem] flex-col items-center justify-center space-y-2 align-middle text-lg md:w-[40rem] lg:w-[45rem] lg:flex-row lg:justify-between"
-          key={item.id}
-        >
-          <div className="my-2 aspect-square h-28 w-28 rounded-md bg-white p-2 lg:h-32 lg:w-32">
-            <img
-              src={item.image}
-              alt=""
-              className="mx-auto h-full w-full object-contain"
-            />
-          </div>
-          <p className="text-center text-sm md:w-[20rem] lg:pl-4 lg:text-lg lg:font-medium">
-            {item.title}
-          </p>
-          <p className="text-base font-medium lg:pl-4 lg:text-lg">
-            ${item.price}
-          </p>
-
-          <p
-            name="quantity"
-            id="quantity"
-            className="text-md mr-2  rounded-md p-2 text-center text-gray-600"
-          >
-            {" "}
-            x {item.quantity}{" "}
-          </p>
-          <div>
-            <button className="rounded-md bg-neutral-400 p-2 text-sm text-white">
-              Remove
-            </button>
-          </div>
-        </div>
-      ));
-    }
-  };
+    setCartData(cart);
+  });
 
   return (
-    <div>
-      <Navbar></Navbar>
-      <div className="mx-auto flex w-[80%] flex-col items-center justify-center space-y-4 rounded-lg bg-neutral-200 p-4 text-base font-bold lg:w-[60%]">
-        {renderElement()}
-        <hr className="my-5 w-[80%] border-[1px] border-neutral-400" />
-        <div className="items-center text-center align-middle text-lg lg:flex lg:w-[80%] lg:justify-between">
-          <h1 className="">Subtotal: ${total}</h1>
-          <button className="mt-2 w-full rounded-md bg-blue-500 p-2 text-base text-white md:w-[12rem]">
-            Checkout
-          </button>
+    <>
+      <div className="2xl:max-w-[1280px] mx-auto py-5 w-full px-5">
+        <h1 className="mb-5 text-3xl font-josefinBold">
+          Your Shopping Cart has {cartData.length} items.
+        </h1>
+
+        <div className="w-[500px]">
+          {cartData?.map((cart) => (
+            <div
+              key={cart.id}
+              className="flex items-start justify-between border-t-[1px] py-6 last:border-b-[1px]"
+            >
+              <div className="flex items-start">
+                <div className="image-container w-[140px] h-[140px] bg-gray-100 rounded-sm ">
+                  <div
+                    className="w-[90%] h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
+                    style={{ backgroundImage: `url(${cart.item.image})` }}
+                    alt="product-image"
+                  />
+                </div>
+
+                <div className="ml-3">
+                  <h1 className="w-[180px] text-xs font-josefinBold text-black/80">
+                    {cart.item.title}
+                  </h1>
+                  <p>${cart.item.price}</p>
+                </div>
+              </div>
+
+              <select
+                id="quantity"
+                className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
+              >
+                <option defaultValue={true} value="1">
+                  1
+                </option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+
+              <X size={18} className="cursor-pointer opacity-60" />
+            </div>
+          ))}
         </div>
       </div>
-      <Footer></Footer>
-    </div>
+    </>
   );
 };
 
