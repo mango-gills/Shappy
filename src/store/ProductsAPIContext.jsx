@@ -9,8 +9,7 @@ const ProductProvider = ({ children }) => {
   const [bestSellers, setBestSellers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fakestoreAPI = "https://fakestoreapi.com/products";
-  const platziAPI = "https://api.escuelajs.co/api/v1/products";
+  // const platziAPI = "https://api.escuelajs.co/api/v1/products";
 
   //Fisher-Yates algorithm
   const fyShuffle = (arr) => {
@@ -25,7 +24,7 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = () => {
       try {
-        fetch(fakestoreAPI)
+        fetch("https://fakestoreapi.com/products")
           .then((response) => {
             if (!response.ok) {
               throw new Error("Network response is not ok.");
