@@ -5,6 +5,7 @@ import CartProduct from "../components/CartPageComponents/CartProduct";
 const Cart = () => {
   const { cartData } = CartContextProvider();
   let totalPayment = 0;
+  let shippingFee = 0;
 
   totalPayment = cartData.reduce((total, cart) => cart.item.price + total, 0);
 
@@ -15,19 +16,39 @@ const Cart = () => {
           Your Shopping Cart has {cartData.length} items.
         </h1>
 
-        <div className="w-[500px]">
-          {cartData?.map((cart) => (
-            <CartProduct key={cart.id} cart={cart} />
-          ))}
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3">
+          <div className="w-[500px] col-span-2">
+            {cartData?.map((cart) => (
+              <CartProduct key={cart.id} cart={cart} />
+            ))}
+          </div>
 
-        <div>
-          <h1 className="text-2xl">
-            Estimated Total: <span className="font-bold">${totalPayment}</span>{" "}
-          </h1>
-          <button className="bg-black text-white px-12 py-4 mt-4">
-            Checkout
-          </button>
+          <div className="col-span-1">
+            <h1 className="text-2xl font-semibold mb-2 border-b-2 border-black/90 pb-2">
+              Order Summary
+            </h1>
+
+            <div className="space-y-3">
+              <div className="text-xl flex justify-between">
+                <h2>Subtotal:</h2>
+                <p>${totalPayment}</p>
+              </div>
+
+              <div className="text-xl flex justify-between">
+                <h2>Shipping:</h2>
+                <p>FREE</p>
+              </div>
+
+              <div className="text-xl flex justify-between font-bold border-t-[1px] border-black/90 pt-2">
+                <h2>Total:</h2>
+                <p>${totalPayment + shippingFee}</p>
+              </div>
+            </div>
+
+            <button className="bg-black/80 text-white text-xl py-4 mt-6 w-full hover:bg-black/95">
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </>

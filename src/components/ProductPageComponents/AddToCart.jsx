@@ -21,12 +21,12 @@ const AddToCart = ({ item }) => {
 
   const handleAddToCart = async () => {
     if (userId) {
-      // await addDoc(collection(db, "cart"), {
-      //   item: { ...item },
-      //   user_id: userId,
-      //   quantity: increment(1),
-      //   timestamp: serverTimestamp(),
-      // });
+      await addDoc(collection(db, "cart"), {
+        item: { ...item },
+        user_id: userId,
+        quantity: increment(1),
+        timestamp: serverTimestamp(),
+      });
 
       console.log("Item was added to cart");
     } else {
