@@ -1,33 +1,24 @@
-import React, { useState } from "react";
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import React from "react";
+
 import { X } from "phosphor-react";
-import { UserAuth } from "../store/AuthContext";
+import { CartContextProvider } from "../store/CartContext";
+import { db } from "../firebaseConfig";
+import { deleteDoc, doc } from "firebase/firestore";
 
 const Cart = () => {
-  const [cartData, setCartData] = useState([]);
-  const { userId } = UserAuth();
+  const { cartData } = CartContextProvider();
 
-  const cartRef = collection(db, "cart");
-  const cartQuery = query(
-    cartRef,
-    where("user_id", "==", userId),
-    orderBy("timestamp")
-  );
+  const handleDelete = (id) => {
+    const cartRef = doc(db, "cart", id);
 
-  onSnapshot(cartQuery, (snapshot) => {
-    const cart = [];
-    snapshot.docs.forEach((doc) => {
-      cart.push({ ...doc.data(), id: doc.id });
-    });
-    setCartData(cart);
-  });
+    deleteDoc(cartRef)
+      .then(() => {
+        console.log("Item has been deleted from the cart.");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -72,7 +63,11 @@ const Cart = () => {
                 <option value="5">5</option>
               </select>
 
-              <X size={18} className="cursor-pointer opacity-60" />
+              <X
+                size={18}
+                className="cursor-pointer opacity-60"
+                onClick={() => handleDelete(cart.id)}
+              />
             </div>
           ))}
         </div>

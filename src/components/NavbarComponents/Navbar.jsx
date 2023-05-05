@@ -1,3 +1,9 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { CartContextProvider } from "../../store/CartContext";
+import { UserAuth } from "../../store/AuthContext";
+
 import {
   Heart,
   MagnifyingGlass,
@@ -5,12 +11,8 @@ import {
   ShoppingCartSimple,
 } from "phosphor-react";
 
-import { Link } from "react-router-dom";
-import React from "react";
-
-import { UserAuth } from "../../store/AuthContext";
-
 const Navbar = () => {
+  const { onCart } = CartContextProvider();
   const { user, logout } = UserAuth();
 
   const handleLogout = async () => {
@@ -40,9 +42,14 @@ const Navbar = () => {
 
           <div className="flex items-center space-x-6">
             <div className="flex space-x-2">
-              <Heart color="#808080" weight="fill" size={25} />
-              <Link to={"/cart"}>
-                <ShoppingCartSimple size={25} />
+              <Heart color="#808080" weight="fill" size={30} />
+              <Link to={"/cart"} className="relative">
+                {onCart > 0 && (
+                  <div className="absolute -top-1 -right-2 bg-green-500/90 rounded-full h-5 w-5 text-white flex items-center justify-center p-2">
+                    <p className="text-xs font-bold">{onCart}</p>
+                  </div>
+                )}
+                <ShoppingCartSimple size={30} />
               </Link>
             </div>
 
