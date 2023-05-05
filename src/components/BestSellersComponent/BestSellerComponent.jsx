@@ -24,7 +24,7 @@ const BestSellerComponent = () => {
 
   return (
     <>
-      <div className="w-full mt-5 mb-3 text-lg pt-1 text-black font-JosefinSansSemiBold flex justify-between">
+      <div className="w-full mt-5 mb-1 text-lg pt-1 text-black font-JosefinSansSemiBold flex justify-between">
         Best Sellers
         <div className="flex space-x-1">
           <CaretCircleLeft
