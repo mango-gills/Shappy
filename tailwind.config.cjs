@@ -7,6 +7,7 @@ module.exports = {
         josefinRegular: ["JosefinSansRegular", "sans-serif"],
         josefinBold: ["JosefinSansBold", "sans-serif"],
         JosefinSansSemiBold: ["JosefinSansSemiBold", "sans-serif"],
+        NunitoSansRegular: ["NunitoSansRegular", "sans-serif"],
       },
     },
   },

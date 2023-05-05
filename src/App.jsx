@@ -17,7 +17,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <AuthContextProvider>
         <ResizeHandlerProvider>
           <CartProvider>
@@ -38,7 +38,7 @@ function App() {
           </CartProvider>
         </ResizeHandlerProvider>
       </AuthContextProvider>
-    </div>
+    </>
   );
 }
 
