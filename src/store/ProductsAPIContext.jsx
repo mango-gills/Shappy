@@ -25,7 +25,12 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get("https://fakestoreapi.com/products");
+        const { data } = await axios
+          .get("https://fakestoreapi.com/products")
+          .catch((error) => {
+            console.log(error.message);
+          });
+        console.log(data);
         setProductsList(data);
         setFeaturedList(fyShuffle(data));
         setBestSellers(fyShuffle(data));
