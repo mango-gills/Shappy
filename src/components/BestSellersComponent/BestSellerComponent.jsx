@@ -47,14 +47,14 @@ const BestSellerComponent = () => {
         ></div>
       ) : (
         <Swiper
-          slidesPerView={isMobile ? 2 : 5}
+          slidesPerView={isMobile ? 2 : 6}
           // spaceBetween={20}
           pagination={{
             clickable: true,
           }}
           modules={[]}
           onSwiper={(swiper) => setSwiperRef(swiper)}
-          className="flex justify-between items-center mb-5 py-5 bg-white"
+          className="flex justify-between items-center mb-3 py-2"
         >
           {bestSellers?.map((product) => (
             <SwiperSlide key={product.id}>
