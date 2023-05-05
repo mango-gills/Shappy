@@ -35,12 +35,11 @@ const CartProduct = ({ cart }) => {
       </div>
 
       <select
+        value={cart.quantity}
         id="quantity"
         className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
       >
-        <option defaultValue={true} value="1">
-          1
-        </option>
+        <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
