@@ -23,7 +23,7 @@ const FeaturedImage = () => {
           clickable: true,
         }}
         modules={[Pagination, Autoplay]}
-        className="bg-gray-400 w-full col-span-2 rounded-md"
+        className="bg-gray-400 w-full col-span-2 rounded-sm"
       >
         <SwiperSlide
           className="w-full h-full bg-center bg-cover bg-no-repeat"
