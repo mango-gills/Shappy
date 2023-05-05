@@ -7,7 +7,13 @@ const Cart = () => {
   let totalPayment = 0;
   let shippingFee = 0;
 
-  totalPayment = cartData.reduce((total, cart) => cart.item.price + total, 0);
+  totalPayment = cartData.reduce(
+    (total, cart) => cart.quantity * cart.item.price + total,
+    0
+  );
+
+  if (totalPayment > 1000) shippingFee = 15;
+  if (totalPayment > 1500) shippingFee = 20;
 
   return (
     <>
@@ -35,8 +41,8 @@ const Cart = () => {
               </div>
 
               <div className="text-xl flex justify-between">
-                <h2>Shipping:</h2>
-                <p>FREE</p>
+                <h2>Shipping Fee:</h2>
+                <p>{shippingFee <= 0 ? "FREE" : `$${shippingFee}.00`}</p>
               </div>
 
               <div className="text-xl flex justify-between font-bold border-t-[1px] border-black/90 pt-2">

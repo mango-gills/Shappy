@@ -17,7 +17,7 @@ const FeaturedImage = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{
-            delay: 5000,
+            delay: 8000,
             disableOnInteraction: false,
           }}
           pagination={{
@@ -48,16 +48,6 @@ const FeaturedImage = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-        {/* <div className="small w-full h-full grid grid-rows-2 gap-3">
-          <div
-            className="  bg-blue-300 w-full h-full bg-cover bg-center bg-no-repeat rounded-lg"
-            style={{ backgroundImage: `url(${image1})` }}
-          ></div>
-          <div
-            className="  bg-blue-300 w-full h-full bg-cover bg-center bg-no-repeat rounded-lg"
-            style={{ backgroundImage: `url(${image2})` }}
-          ></div>
-        </div> */}
       </div>
     </div>
   );
