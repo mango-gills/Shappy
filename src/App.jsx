@@ -12,6 +12,8 @@ import Layout from "./layout/Layout";
 import { AuthContextProvider } from "./store/AuthContext";
 import { ResizeHandlerProvider } from "./store/ResizeHandlerProvider";
 import { CartProvider } from "./store/CartContext";
+import NotFound from "./pages/NotFound";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
@@ -26,7 +28,10 @@ function App() {
                   <Route path="/product/:id" element={<ProductPage />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
-                  <Route path="/cart" element={<Cart />} />
+                  <Route element={<ProtectedRoutes />}>
+                    <Route path="/cart" element={<Cart />} />
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </Layout>
             </Router>
