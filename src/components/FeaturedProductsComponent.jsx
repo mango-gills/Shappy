@@ -10,7 +10,7 @@ import { CaretCircleLeft, CaretCircleRight } from "phosphor-react";
 import { ResizeHandler } from "../store/ResizeHandlerProvider";
 
 const FeaturedProductsComponent = () => {
-  const { featuredList } = useContext(FeaturedProductsContext);
+  const { featuredList, isLoading } = useContext(FeaturedProductsContext);
   const { isMobile } = ResizeHandler();
 
   const [swiperRef, setSwiperRef] = useState(null);
@@ -41,22 +41,29 @@ const FeaturedProductsComponent = () => {
         </div>
       </div>
 
-      <Swiper
-        slidesPerView={isMobile ? 2 : 5}
-        // spaceBetween={20}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[]}
-        onSwiper={(swiper) => setSwiperRef(swiper)}
-        className="flex justify-between items-center mb-5 py-5 bg-white"
-      >
-        {featuredList?.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductDetails items={product} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {isLoading ? (
+        <div
+          class="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        ></div>
+      ) : (
+        <Swiper
+          slidesPerView={isMobile ? 2 : 5}
+          // spaceBetween={20}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[]}
+          onSwiper={(swiper) => setSwiperRef(swiper)}
+          className="flex justify-between items-center mb-5 py-5 bg-white"
+        >
+          {featuredList?.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductDetails items={product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </>
   );
 };

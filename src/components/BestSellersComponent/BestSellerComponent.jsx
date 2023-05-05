@@ -9,7 +9,7 @@ import ProductDetails from "../ProductDetails";
 import { ResizeHandler } from "../../store/ResizeHandlerProvider";
 
 const BestSellerComponent = () => {
-  const { bestSellers } = useContext(FeaturedProductsContext);
+  const { bestSellers, isLoading } = useContext(FeaturedProductsContext);
   const { isMobile } = ResizeHandler();
 
   const [swiperRef, setSwiperRef] = useState(null);
@@ -39,22 +39,30 @@ const BestSellerComponent = () => {
           />
         </div>
       </div>
-      <Swiper
-        slidesPerView={isMobile ? 2 : 5}
-        // spaceBetween={20}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[]}
-        onSwiper={(swiper) => setSwiperRef(swiper)}
-        className="flex justify-between items-center mb-5 py-5 bg-white"
-      >
-        {bestSellers?.map((product) => (
-          <SwiperSlide key={product.id}>
-            <ProductDetails items={product} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
+      {isLoading ? (
+        <div
+          class="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        ></div>
+      ) : (
+        <Swiper
+          slidesPerView={isMobile ? 2 : 5}
+          // spaceBetween={20}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[]}
+          onSwiper={(swiper) => setSwiperRef(swiper)}
+          className="flex justify-between items-center mb-5 py-5 bg-white"
+        >
+          {bestSellers?.map((product) => (
+            <SwiperSlide key={product.id}>
+              <ProductDetails items={product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </>
   );
 };

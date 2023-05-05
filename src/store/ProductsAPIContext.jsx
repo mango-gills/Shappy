@@ -7,6 +7,7 @@ const ProductProvider = ({ children }) => {
   const [productsList, setProductsList] = useState([]);
   const [featuredList, setFeaturedList] = useState([]);
   const [bestSellers, setBestSellers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fakestoreAPI = "https://fakestoreapi.com/products";
   const platziAPI = "https://api.escuelajs.co/api/v1/products";
@@ -25,13 +26,22 @@ const ProductProvider = ({ children }) => {
     const fetchData = () => {
       try {
         fetch(fakestoreAPI)
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response is not ok.");
+            }
+            return response.json();
+          })
           .then((result) => {
             setProductsList(result);
             setFeaturedList(fyShuffle(result));
             setBestSellers(fyShuffle(result));
+            setIsLoading(false);
           })
-          .catch((error) => console.log("Something went wrong.", error));
+          .catch((error) => {
+            console.log("Something went wrong.", error);
+            setIsLoading(false);
+          });
       } catch (error) {
         console.log(error);
       }
@@ -40,8 +50,10 @@ const ProductProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductsContext.Provider value={{ productsList }}>
-      <FeaturedProductsContext.Provider value={{ featuredList, bestSellers }}>
+    <ProductsContext.Provider value={{ productsList, isLoading }}>
+      <FeaturedProductsContext.Provider
+        value={{ featuredList, bestSellers, isLoading }}
+      >
         {children}
       </FeaturedProductsContext.Provider>
     </ProductsContext.Provider>
