@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ResizeContext = createContext();
 
 export const ResizeHandlerProvider = ({ children }) => {
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleWindowResize = () => {
     if (window.innerWidth < 768) {

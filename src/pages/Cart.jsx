@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   collection,
-  doc,
-  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -16,34 +14,20 @@ const Cart = () => {
   const [cartData, setCartData] = useState([]);
   const { userId } = UserAuth();
 
-  useEffect(() => {
-    // (async () => {
-    //   const snapshots = await getDocs(collection(db, "cart"));
-    //   const docs = snapshots.docs.map((doc) => {
-    //     const data = doc.data();
-    //     data.id = doc.id;
-    //     return data;
-    //   });
-    //   setCartData(docs);
-    // })();
+  const cartRef = collection(db, "cart");
+  const cartQuery = query(
+    cartRef,
+    where("user_id", "==", userId),
+    orderBy("timestamp")
+  );
 
-    const cartRef = collection(db, "cart");
-    const cartQuery = query(
-      cartRef,
-      where("user_id", "==", userId),
-      orderBy("timestamp")
-    );
-
-    onSnapshot(cartQuery, (snapshot) =>
-      setCartData(
-        snapshot.docs.map((doc) => {
-          const data = doc.data();
-          data.id = doc.id;
-          return data;
-        })
-      )
-    );
-  }, []);
+  onSnapshot(cartQuery, (snapshot) => {
+    const cart = [];
+    snapshot.docs.forEach((doc) => {
+      cart.push({ ...doc.data(), id: doc.id });
+    });
+    setCartData(cart);
+  });
 
   return (
     <>
