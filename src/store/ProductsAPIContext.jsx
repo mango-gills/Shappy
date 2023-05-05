@@ -23,25 +23,25 @@ const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios
-          .get("https://fakestoreapi.com/products")
-          .catch((error) => {
-            console.log(error.message);
-          });
-        console.log(data);
-        setProductsList(data);
-        setFeaturedList(fyShuffle(data));
-        setBestSellers(fyShuffle(data));
-
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    return () => fetchData();
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const { data } = await axios
+        .get("https://fakestoreapi.com/products")
+        .catch((error) => {
+          console.log(error.message);
+        });
+      setProductsList(data);
+      setFeaturedList(fyShuffle(data));
+      setBestSellers(fyShuffle(data));
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <ProductsContext.Provider value={{ productsList, isLoading }}>
