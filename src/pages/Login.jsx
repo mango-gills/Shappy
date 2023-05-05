@@ -27,8 +27,8 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full h-screen bg-white flex justify-center mt-5">
-      <div className="bg-[#F8F9FA] w-[850px] h-[500px] grid grid-cols-5 select-none drop-shadow-md">
+    <div className="w-full flex justify-center mt-10 mb-16">
+      <div className="bg-white w-[850px] h-[500px] grid grid-cols-5 select-none drop-shadow-md">
         <div
           className="bg-blue-300 col-span-3 bg-cover bg-center bg-no-repeat"
           style={{
