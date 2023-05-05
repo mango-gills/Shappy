@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 const ProductsContext = createContext();
@@ -22,25 +23,14 @@ const ProductProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const fetchData = () => {
+    const fetchData = async () => {
       try {
-        fetch("https://fakestoreapi.com/products")
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error("Network response is not ok.");
-            }
-            return response.json();
-          })
-          .then((result) => {
-            setProductsList(result);
-            setFeaturedList(fyShuffle(result));
-            setBestSellers(fyShuffle(result));
-            setIsLoading(false);
-          })
-          .catch((error) => {
-            console.log("Something went wrong.", error);
-            setIsLoading(false);
-          });
+        const { data } = await axios.get("https://fakestoreapi.com/products");
+        setProductsList(data);
+        setFeaturedList(fyShuffle(data));
+        setBestSellers(fyShuffle(data));
+
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
