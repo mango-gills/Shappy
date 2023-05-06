@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import React from "react";
-import { Star } from "phosphor-react";
 
 const ProductDetails = ({ items }) => {
   const { title, image, price, id, rating } = items;
