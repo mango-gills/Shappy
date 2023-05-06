@@ -1,7 +1,7 @@
 import React from "react";
 import { X } from "phosphor-react";
 import { db } from "../../firebaseConfig";
-import { deleteDoc, doc } from "firebase/firestore";
+import { deleteDoc, doc, serverTimestamp, updateDoc } from "firebase/firestore";
 
 const CartProduct = ({ cart }) => {
   const handleDelete = (id) => {
@@ -13,6 +13,12 @@ const CartProduct = ({ cart }) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleQuantityChange = (choice, id) => {
+    updateDoc(doc(db, "cart", id), {
+      quantity: choice.target.value,
+    });
   };
 
   return (
@@ -35,9 +41,11 @@ const CartProduct = ({ cart }) => {
       </div>
 
       <select
-        defaultValue={cart.item.quantity}
+        defaultValue={cart.quantity}
+        value={cart.item.quantity}
         id="quantity"
         className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
+        onChange={(choice) => handleQuantityChange(choice, cart.id)}
       >
         <option value="1">1</option>
         <option value="2">2</option>

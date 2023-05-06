@@ -4,10 +4,9 @@ import {
   collection,
   addDoc,
   serverTimestamp,
-  getDocs,
   doc,
   increment,
-  setDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
@@ -26,11 +25,8 @@ const AddToCart = ({ item }) => {
   const handleAddToCart = async () => {
     if (userId) {
       if (dup[0]?.item.id === item.id && dup[0]?.user_id == userId) {
-        setDoc(doc(db, "cart", dup[0]?.id), {
-          item: { ...item },
-          user_id: userId,
-          quantity: dup[0]?.quantity + 1,
-          timestamp: serverTimestamp(),
+        updateDoc(doc(db, "cart", dup[0]?.id), {
+          quantity: +dup[0]?.quantity + 1,
         });
       } else {
         await addDoc(collection(db, "cart"), {
