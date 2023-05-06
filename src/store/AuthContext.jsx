@@ -30,20 +30,13 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setUserId(currentUser.uid);
     });
 
     return () => {
       unsubscribe();
     };
   }, []);
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUserId(user.uid);
-    } else {
-      setUserId(null);
-    }
-  });
 
   return (
     <UserContext.Provider value={{ createUser, user, logout, login, userId }}>

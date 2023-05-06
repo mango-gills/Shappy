@@ -17,8 +17,8 @@ const ProductPageItemDetails = () => {
   }, []);
 
   return (
-    <div className="grid place-items-center mt-20 max-w-full font-josefinRegular">
-      <div className="bg-[#DFDFDF] max-w-[900px] h-[500px] grid grid-cols-2 drop-shadow-md">
+    <div className="grid place-items-center mb-5 max-w-full font-josefinRegular">
+      <div className="bg-[#DFDFDF] max-w-[950px] h-[550px] grid grid-cols-2 drop-shadow-md">
         <div className="h-full w-full overflow-hidden flex justify-center items-center">
           <img
             src={image}
@@ -30,11 +30,11 @@ const ProductPageItemDetails = () => {
         <div className="bg-white w-full py-6 px-8 h-full flex flex-col justify-between">
           <div className="h-[300px] overflow-hidden mb-2">
             <p className="uppercase text-gray-500 my-1 text-sm">{category}</p>
-            <h1 className="text-xl font-JosefinSansSemiBold text-[#303030]">
+            <h1 className="text-xl mt-2 font-JosefinSansSemiBold text-[#303030]">
               {title}
             </h1>
 
-            <h1 className="text-2xl mt-3 font-josefinBold text-[#303030]">
+            <h1 className="text-2xl mt-3 font-JosefinSansSemiBold text-orange-500">
               ${price}
             </h1>
 
