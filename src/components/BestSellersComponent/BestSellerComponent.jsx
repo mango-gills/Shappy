@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { FeaturedProductsContext } from "../../store/ProductsAPIContext";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 import { CaretCircleLeft, CaretCircleRight } from "phosphor-react";
-import ProductDetails from "../ProductDetails";
 import { ResizeHandler } from "../../store/ResizeHandlerProvider";
+
+import ProductDetails from "../ProductDetails";
 
 const BestSellerComponent = () => {
   const { bestSellers, isLoading } = useContext(FeaturedProductsContext);

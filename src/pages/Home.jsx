@@ -1,4 +1,4 @@
-import { ProductProvider, ProductsContext } from "../store/ProductsAPIContext";
+import { ProductProvider } from "../store/ProductsAPIContext";
 
 import FeaturedImage from "../components/FeaturedImage";
 import FeaturedProducts from "../components/FeaturedProductsComponent";
@@ -8,11 +8,9 @@ import BestSellerComponent from "../components/BestSellersComponent/BestSellerCo
 const Home = () => {
   return (
     <>
-      <ProductProvider>
-        <FeaturedImage />
-        <FeaturedProducts />
-        <BestSellerComponent />
-      </ProductProvider>
+      <FeaturedImage />
+      <FeaturedProducts />
+      <BestSellerComponent />
     </>
   );
 };

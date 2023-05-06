@@ -7,6 +7,7 @@ const FeaturedProductsContext = createContext();
 const ProductProvider = ({ children }) => {
   const [productsList, setProductsList] = useState([]);
   const [featuredList, setFeaturedList] = useState([]);
+  const [recommendedList, setRecommended] = useState([]);
   const [bestSellers, setBestSellers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,6 +37,7 @@ const ProductProvider = ({ children }) => {
       setProductsList(data);
       setFeaturedList(fyShuffle(data));
       setBestSellers(fyShuffle(data));
+      setRecommended(data);
 
       setIsLoading(false);
     } catch (error) {
@@ -46,7 +48,13 @@ const ProductProvider = ({ children }) => {
   return (
     <ProductsContext.Provider value={{ productsList, isLoading }}>
       <FeaturedProductsContext.Provider
-        value={{ featuredList, bestSellers, isLoading }}
+        value={{
+          featuredList,
+          bestSellers,
+          recommendedList,
+          fyShuffle,
+          isLoading,
+        }}
       >
         {children}
       </FeaturedProductsContext.Provider>
