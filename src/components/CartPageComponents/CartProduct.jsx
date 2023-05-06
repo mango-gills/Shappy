@@ -35,7 +35,7 @@ const CartProduct = ({ cart }) => {
       </div>
 
       <select
-        value={cart.quantity}
+        defaultValue={cart.item.quantity}
         id="quantity"
         className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
       >
