@@ -45,32 +45,35 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-6">
-            <div className="flex space-x-3">
-              <Heart color="#808080" weight="fill" size={32} />
-              <Link to={"/cart"} className="relative">
-                {onCart > 0 && (
-                  <div className="absolute -top-1 -right-2 bg-green-500/90 rounded-full h-5 w-5 text-white flex items-center justify-center p-2">
-                    <p className="text-xs font-bold">{onCart}</p>
-                  </div>
-                )}
-                <ShoppingCartSimple size={32} />
-              </Link>
-            </div>
-
             {user ? (
-              <div className="flex space-x-2 text-lg">
-                <p>{user.email}</p>
-                <p className="cursor-pointer" onClick={handleLogout}>
-                  logout
-                </p>
-              </div>
+              <>
+                <div className="flex space-x-3">
+                  <Heart color="#808080" weight="fill" size={32} />
+                  <Link to={"/cart"} className="relative">
+                    {onCart > 0 && (
+                      <div className="absolute -top-1 -right-2 bg-green-500/90 rounded-full h-5 w-5 text-white flex items-center justify-center p-2">
+                        <p className="text-xs font-bold">{onCart}</p>
+                      </div>
+                    )}
+                    <ShoppingCartSimple size={32} />
+                  </Link>
+                </div>
+                <div className="flex space-x-2 text-lg">
+                  <p>{user.email}</p>
+                  <p className="cursor-pointer" onClick={handleLogout}>
+                    logout
+                  </p>
+                </div>
+              </>
             ) : (
-              <div className="flex space-x-1">
+              <div className="flex items-center space-x-4 text-lg font-semibold text-neutral-700">
                 <Link to={"/login"} className="hover:text-black duration-150">
                   <p>Login</p>
                 </Link>
-                <p>|</p>
-                <Link to={"/signup"} className="hover:text-black duration-150">
+                <Link
+                  to={"/signup"}
+                  className="duration-200 ease-in rounded-md px-5 py-1 bg-black/70 text-white hover:bg-black"
+                >
                   <p>Signup</p>
                 </Link>
               </div>
