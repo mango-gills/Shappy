@@ -37,7 +37,7 @@ const Cart = () => {
             <div className="space-y-3">
               <div className="text-xl flex justify-between">
                 <h2>Subtotal:</h2>
-                <p>${totalPayment}</p>
+                <p>${totalPayment.toFixed(2)}</p>
               </div>
 
               <div className="text-xl flex justify-between">
@@ -47,7 +47,7 @@ const Cart = () => {
 
               <div className="text-xl flex justify-between font-bold border-t-[1px] border-black/90 pt-2">
                 <h2>Total:</h2>
-                <p>${totalPayment + shippingFee}</p>
+                <p>${(totalPayment + shippingFee).toFixed(2)}</p>
               </div>
             </div>
 
