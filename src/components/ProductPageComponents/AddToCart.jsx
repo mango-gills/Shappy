@@ -27,7 +27,6 @@ const AddToCart = ({ item }) => {
       if (dup[0]?.item.id === item.id && dup[0]?.user_id == userId) {
         updateDoc(doc(db, "cart", dup[0]?.id), {
           quantity: +dup[0]?.quantity + 1,
-          timestamp: serverTimestamp(),
         });
       } else {
         await addDoc(collection(db, "cart"), {

@@ -18,7 +18,6 @@ const CartProduct = ({ cart }) => {
   const handleQuantityChange = (choice, id) => {
     updateDoc(doc(db, "cart", id), {
       quantity: choice.target.value,
-      timestamp: serverTimestamp(),
     });
   };
 
