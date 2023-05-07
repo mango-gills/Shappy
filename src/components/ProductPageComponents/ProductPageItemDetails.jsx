@@ -25,7 +25,9 @@ const ProductPageItemDetails = () => {
             </Link>
             <span> &gt;</span>
             <p className="font-semibold">
-              {category == "jewelery" ? "Jewelry" : category}
+              {category == "jewelery"
+                ? "Jewelry"
+                : category?.charAt(0).toUpperCase() + category?.slice(1)}
             </p>
             <span> &gt;</span>
             <p className="text-neutral-500">{title}</p>
