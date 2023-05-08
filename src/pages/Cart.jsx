@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { CartContextProvider } from "../store/CartContext";
 import CartProduct from "../components/CartPageComponents/CartProduct";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { UserAuth } from "../store/AuthContext";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { cartData } = CartContextProvider();
+  const [checkout, setCheckout] = useState(false);
+  const { userId } = UserAuth();
+  const navigate = useNavigate();
+
+  const deleteOrder = () => {
+    cartData.map((cart) => {
+      navigate("/order-success");
+
+      setTimeout(() => {
+        const cartRef = doc(db, "cart", userId, "orders", cart.id);
+        deleteDoc(cartRef).catch((error) => {
+          console.log(error);
+        });
+      }, 2000);
+    });
+  };
+
   let totalPayment = 0;
   let shippingFee = 0;
 
@@ -14,6 +36,10 @@ const Cart = () => {
 
   if (totalPayment > 1000) shippingFee = 15;
   if (totalPayment > 1500) shippingFee = 20;
+
+  const handleCheckout = () => {
+    setCheckout(true);
+  };
 
   return (
     <>
@@ -51,9 +77,42 @@ const Cart = () => {
               </div>
             </div>
 
-            <button className="bg-black/80 text-white text-xl py-4 mt-6 w-full hover:bg-black/95">
+            <button
+              className={`${
+                checkout ? "hidden" : ""
+              } bg-black/80 text-white text-xl py-4 mt-6 w-full hover:bg-black/95`}
+              onClick={handleCheckout}
+            >
               Checkout
             </button>
+            <div className={`${checkout ? "" : "hidden"} mt-2`}>
+              <PayPalScriptProvider
+                options={{ "client-id": import.meta.env.VITE_CLIENT_ID }}
+              >
+                <PayPalButtons
+                  createOrder={(data, actions) => {
+                    return actions.order.create({
+                      purchase_units: [
+                        {
+                          amount: {
+                            value: totalPayment,
+                          },
+                        },
+                      ],
+                    });
+                  }}
+                  onApprove={(data, actions) => {
+                    return actions.order.capture().then(function (details) {
+                      deleteOrder();
+                      // alert(
+                      //   "Transaction completed by " +
+                      //     details.payer.name.given_name
+                      // );
+                    });
+                  }}
+                />
+              </PayPalScriptProvider>
+            </div>
           </div>
         </div>
       </div>

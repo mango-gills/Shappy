@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to={"/"} className="flex items-center">
             <div>
-              <img src="shappy-logo.svg" alt="shappy-logo" />
+              <img src="/shappy-logo.svg" alt="shappy-logo" />
               <small className="tracking-tight">
                 Shop Smarter, Shop Happier!
               </small>

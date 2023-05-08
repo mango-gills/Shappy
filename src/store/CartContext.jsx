@@ -18,28 +18,25 @@ export const CartProvider = ({ children }) => {
   const { userId } = UserAuth();
   const onCart = cartData.length;
 
-  const cartRef = collection(db, "cart");
-  const cartQuery = query(
-    cartRef,
-    where("user_id", "==", userId),
-    orderBy("timestamp")
-  );
+  if (userId) {
+    const cartRef = collection(db, "cart", userId, "orders");
 
-  // onSnapshot(cartQuery, (snapshot) => {
+    onSnapshot(cartRef, (snapshot) => {
+      const cart = [];
+      snapshot.docs.forEach((doc) => {
+        cart.push({ ...doc.data(), id: doc.id });
+      });
+      setCartData(cart);
+    });
+  }
+
+  // getDocs(cartQuery).then((snapshot) => {
   //   const cart = [];
   //   snapshot.docs.forEach((doc) => {
   //     cart.push({ ...doc.data(), id: doc.id });
   //   });
   //   setCartData(cart);
   // });
-
-  getDocs(cartQuery).then((snapshot) => {
-    const cart = [];
-    snapshot.docs.forEach((doc) => {
-      cart.push({ ...doc.data(), id: doc.id });
-    });
-    setCartData(cart);
-  });
 
   return (
     <CartContext.Provider value={{ cartData, onCart }}>

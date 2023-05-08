@@ -15,6 +15,7 @@ import { CartProvider } from "./store/CartContext";
 import NotFound from "./pages/NotFound";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { ProductProvider } from "./store/ProductsAPIContext";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                     <Route path="/signup" element={<Signup />} />
                     <Route element={<ProtectedRoutes />}>
                       <Route path="/cart" element={<Cart />} />
+                      <Route path="/order-success" element={<OrderSuccess />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
                   </Routes>
