@@ -25,11 +25,11 @@ const AddToCart = ({ item }) => {
   const handleAddToCart = async () => {
     if (userId) {
       if (dup[0]?.item.id === item.id && dup[0]?.user_id == userId) {
-        updateDoc(doc(db, "cart", dup[0]?.id), {
+        updateDoc(doc(db, "cart", userId, "orders", dup[0]?.id), {
           quantity: +dup[0]?.quantity + 1,
         });
       } else {
-        await addDoc(collection(db, "cart"), {
+        await addDoc(collection(db, "cart", userId, "orders"), {
           item: { ...item },
           user_id: userId,
           quantity: increment(1),

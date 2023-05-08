@@ -2,10 +2,13 @@ import React from "react";
 import { X } from "phosphor-react";
 import { db } from "../../firebaseConfig";
 import { deleteDoc, doc, serverTimestamp, updateDoc } from "firebase/firestore";
+import { UserAuth } from "../../store/AuthContext";
 
 const CartProduct = ({ cart }) => {
+  const { userId } = UserAuth();
+
   const handleDelete = (id) => {
-    const cartRef = doc(db, "cart", id);
+    const cartRef = doc(db, "cart", userId, "orders", id);
     deleteDoc(cartRef)
       .then(() => {
         console.log("Item has been deleted from the cart.");
@@ -16,9 +19,10 @@ const CartProduct = ({ cart }) => {
   };
 
   const handleQuantityChange = (choice, id) => {
-    updateDoc(doc(db, "cart", id), {
-      quantity: choice.target.value,
-    });
+    if (userId)
+      updateDoc(doc(db, "cart", userId, "orders", id), {
+        quantity: choice.target.value,
+      });
   };
 
   return (
