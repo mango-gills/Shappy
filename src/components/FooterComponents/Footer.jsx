@@ -1,3 +1,9 @@
+import {
+  FacebookLogo,
+  InstagramLogo,
+  TwitterLogo,
+  YoutubeLogo,
+} from "phosphor-react";
 import React from "react";
 
 const Footer = () => {
@@ -23,10 +29,51 @@ const Footer = () => {
               <li>Blog</li>
             </ul>
           </div>
+          <div className="follow-us">
+            <h1 className="mb-1 font-bold">Follow Us</h1>
+            <ul className="space-y-2 font-light">
+              <li className="flex items-center">
+                <FacebookLogo
+                  size={20}
+                  color="#ffffff"
+                  weight="fill"
+                  className="mr-1"
+                />
+                Facebook
+              </li>
+              <li className="flex items-center">
+                <YoutubeLogo
+                  size={20}
+                  color="#ffffff"
+                  weight="fill"
+                  className="mr-1"
+                />
+                Youtube
+              </li>
+              <li className="flex items-center">
+                <TwitterLogo
+                  size={20}
+                  color="#ffffff"
+                  weight="fill"
+                  className="mr-1"
+                />
+                Twitter
+              </li>
+              <li className="flex items-center">
+                <InstagramLogo
+                  size={20}
+                  color="#ffffff"
+                  weight="fill"
+                  className="mr-1"
+                />
+                Instagram
+              </li>
+            </ul>
+          </div>
         </div>
         <hr className="my-2" />
         <div className="footer-text-info flex flex-col-reverse items-center justify-between p-4 text-center font-normal text-white">
-          <p>© 2022 Shappy. All Rights Reserved.</p>
+          <p>© 2023 Shappy. All Rights Reserved.</p>
           <div className="payment-info flex flex-col items-center pb-4">
             <p>We accept the following payment methods.</p>
             <img
