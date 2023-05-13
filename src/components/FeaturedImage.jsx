@@ -16,7 +16,7 @@ const FeaturedImage = () => {
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 8000,
+          delay: 20000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -29,21 +29,25 @@ const FeaturedImage = () => {
           className="w-full h-full bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(${image3})` }}
         ></SwiperSlide>
-        <SwiperSlide
+        {/* <SwiperSlide
           className="w-full h-full bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(${image6})` }}
-        ></SwiperSlide>
+        ></SwiperSlide> */}
         <SwiperSlide
-          className="w-full h-full bg-center bg-cover bg-no-repeat px-24 pt-32"
+          className="w-full h-full bg-center bg-cover bg-no-repeat pt-32"
           style={{ backgroundImage: `url(${image7})` }}
         >
-          <div>
-            <h1 className="text-white/90 text-6xl tracking-wider font-extrabold drop-shadow-lg select-none">
-              Limited Time Only!
-            </h1>
-            <p className="text-3xl text-black/80">
-              Discounts on Your Favorite Products
-            </p>
+          <div className="bg-[#5F0C0C] text-white opacity-95 py-8 px-10 w-[600px] flex flex-col justify-between items-start h-[260px]">
+            <div>
+              <h1 className="text-6xl tracking-wide font-bold drop-shadow-lg select-none">
+                MEGA SALE!
+              </h1>
+              <p className="text-4xl mt-1">Save Up to 50% off Everything</p>
+            </div>
+
+            <button className="bg-black/95 px-4 py-2 text-lg font-semibold">
+              SHOP NOW
+            </button>
           </div>
         </SwiperSlide>
       </Swiper>
