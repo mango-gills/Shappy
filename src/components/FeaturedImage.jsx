@@ -16,7 +16,7 @@ const FeaturedImage = () => {
         slidesPerView={1}
         loop={true}
         autoplay={{
-          delay: 20000,
+          delay: 10000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -29,10 +29,23 @@ const FeaturedImage = () => {
           className="w-full h-full bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(${image3})` }}
         ></SwiperSlide>
-        {/* <SwiperSlide
-          className="w-full h-full bg-center bg-cover bg-no-repeat"
+        <SwiperSlide
+          className="w-full h-full bg-center bg-cover bg-no-repeat pt-32"
           style={{ backgroundImage: `url(${image6})` }}
-        ></SwiperSlide> */}
+        >
+          <div className="bg-[#270C5F] text-white opacity-95 py-8 px-10 w-[600px] flex flex-col justify-between items-start h-[260px]">
+            <div>
+              <h1 className="text-6xl tracking-wide font-bold drop-shadow-lg select-none">
+                LAST CHANCE!
+              </h1>
+              <p className="text-4xl mt-1">End of Season Clearance Sale</p>
+            </div>
+
+            <button className="bg-black/95 px-4 py-2 text-lg font-semibold">
+              SHOP NOW
+            </button>
+          </div>
+        </SwiperSlide>
         <SwiperSlide
           className="w-full h-full bg-center bg-cover bg-no-repeat pt-32"
           style={{ backgroundImage: `url(${image7})` }}
