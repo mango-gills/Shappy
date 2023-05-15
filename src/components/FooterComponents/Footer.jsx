@@ -8,9 +8,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full  mx-auto bg-[#161616]  text-black pt-10">
+    <footer className="w-full  mx-auto bg-[#161616]  text-black pt-5">
       <div className="mx-auto w-full lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px]">
-        <div className="footer-links my-6 flex flex-col items-center space-y-6 pb-2 text-center text-white lg:flex-row lg:items-start lg:space-y-0 lg:space-x-12 lg:pb-0 lg:text-left">
+        <div className="footer-links my-6 flex items-start px-5 lg:px-0 space-x-6 pb-2 text-white">
           <div className="customer-service">
             <h1 className="mb-1 font-bold">Customer Service</h1>
             <ul className="space-y-2 font-light">

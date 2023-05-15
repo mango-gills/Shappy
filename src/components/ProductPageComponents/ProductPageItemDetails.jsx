@@ -34,21 +34,21 @@ const ProductPageItemDetails = () => {
             <span> &gt;</span>
             <p className="text-neutral-500">{title}</p>
           </div>
-          <div className="bg-[#DFDFDF] max-w-[950px] h-[550px] grid grid-cols-2 drop-shadow-md">
-            <div className="h-full w-full overflow-hidden flex justify-center items-center">
+          <div className="bg-[#DFDFDF] max-w-[950px] md:h-[550px] grid md:grid-cols-2 drop-shadow-md">
+            <div className="h-[350px] md:h-full w-full overflow-hidden flex justify-center items-center">
               <img
                 src={image}
                 alt="product-image"
-                className="mx-auto mix-blend-multiply w-[80%] h-[80%] object-contain"
+                className="mx-auto mix-blend-multiply w-[90%] h-[90%] md:w-[80%] md:h-[80%] object-contain"
               />
             </div>
 
             <div className="bg-white w-full py-6 px-8 h-full flex flex-col justify-between">
-              <div className="h-[300px] overflow-hidden mb-2">
-                <p className="uppercase text-gray-500 my-1 text-sm">
+              <div className="h-full md:h-[250px] overflow-hidden mb-2">
+                <p className="uppercase text-gray-500 my-1 text-xs md:text-sm">
                   {category}
                 </p>
-                <h1 className="text-xl mt-2 font-JosefinSansSemiBold text-[#303030]">
+                <h1 className="text-lg md:text-xl mt-2 font-JosefinSansSemiBold text-[#303030]">
                   {title}
                 </h1>
 
@@ -56,7 +56,7 @@ const ProductPageItemDetails = () => {
                   ${price}
                 </h1>
 
-                <p className="text-xs text-[#4A4A4A]/80 mt-2 leading-relaxed">
+                <p className="text-[11px] md:text-xs text-[#4A4A4A]/80 mt-2 leading-relaxed">
                   {description}
                 </p>
               </div>
