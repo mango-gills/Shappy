@@ -14,6 +14,12 @@ export const ResizeHandlerProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    const { innerWidth } = window;
+
+    if (innerWidth < 768) {
+      setIsMobile(true);
+    }
+
     window.addEventListener("resize", handleWindowResize);
   }, []);
 
