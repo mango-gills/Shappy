@@ -30,35 +30,38 @@ const FeaturedImage = () => {
           style={{ backgroundImage: `url(${image3})` }}
         ></SwiperSlide>
         <SwiperSlide
-          className="w-full h-full bg-center bg-cover bg-no-repeat pt-32"
+          className="w-full h-full bg-center bg-cover bg-no-repeat md:pt-32"
           style={{ backgroundImage: `url(${image6})` }}
         >
-          <div className="bg-[#270C5F] text-white opacity-95 py-8 px-10 w-[600px] flex flex-col justify-between items-start h-[260px]">
+          <div className="bg-[#270C5F] text-white opacity-95 py-4 md:py-8 px-5 md:px-10 w-1/2 md:w-[600px] flex flex-col justify-between items-start  md:h-[260px] h-full">
             <div>
-              <h1 className="text-6xl tracking-wide font-bold drop-shadow-lg select-none">
+              <h1 className="text-xl md:text-6xl tracking-wide font-bold drop-shadow-lg select-none">
                 LAST CHANCE!
               </h1>
-              <p className="text-4xl mt-1">End of Season Clearance Sale</p>
+              <p className="text-base md:text-4xl mt-1">
+                End of Season Clearance Sale
+              </p>
             </div>
-
-            <button className="bg-black/95 px-4 py-2 text-lg font-semibold">
+            <button className="bg-black/95 px-4 py-2 text-sm md:text-lg font-semibold">
               SHOP NOW
             </button>
           </div>
         </SwiperSlide>
         <SwiperSlide
-          className="w-full h-full bg-center bg-cover bg-no-repeat pt-32"
+          className="w-full h-full bg-center bg-cover bg-no-repeat md:pt-32"
           style={{ backgroundImage: `url(${image7})` }}
         >
-          <div className="bg-[#5F0C0C] text-white opacity-95 py-8 px-10 w-[600px] flex flex-col justify-between items-start h-[260px]">
+          <div className="bg-[#5F0C0C] text-white opacity-95 py-4 md:py-8 px-5 md:px-10 w-1/2 md:w-[600px] flex flex-col justify-between items-start  md:h-[260px] h-full">
             <div>
-              <h1 className="text-6xl tracking-wide font-bold drop-shadow-lg select-none">
+              <h1 className="text-xl md:text-6xl tracking-wide font-bold drop-shadow-lg select-none">
                 MEGA SALE!
               </h1>
-              <p className="text-4xl mt-1">Save Up to 50% off Everything</p>
+              <p className="text-base md:text-4xl mt-1">
+                Save Up to 50% off Everything
+              </p>
             </div>
 
-            <button className="bg-black/95 px-4 py-2 text-lg font-semibold">
+            <button className="bg-black/95 px-4 py-2 text-sm md:text-lg font-semibold">
               SHOP NOW
             </button>
           </div>
