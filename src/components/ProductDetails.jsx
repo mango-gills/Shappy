@@ -9,7 +9,7 @@ const ProductDetails = ({ items }) => {
       <div className="w-[160px] h-[240px] md:w-[205px] md:h-[290px] bg-white font-josefinRegular mx-auto cursor-pointer flex flex-col items-center ease-in duration-75 border-[1px] border-transparent hover:border-neutral-300 hover:shadow-lg hover:border-[1px]">
         <div className="image-container my-4 w-[170px] h-[170px]">
           <div
-            className="w-[90%] h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
+            className="w-[80%] h-[80%] md:w-[90%] md:h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
             style={{ backgroundImage: `url(${image})` }}
             alt="product-image"
           />
