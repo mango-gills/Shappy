@@ -6,7 +6,7 @@ export const ResizeHandlerProvider = ({ children }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   const handleWindowResize = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth <= 1000) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
@@ -16,7 +16,7 @@ export const ResizeHandlerProvider = ({ children }) => {
   useEffect(() => {
     const { innerWidth } = window;
 
-    if (innerWidth < 768) {
+    if (innerWidth <= 1000) {
       setIsMobile(true);
     }
 
