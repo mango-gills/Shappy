@@ -45,14 +45,14 @@ const Signup = () => {
 
   return (
     <div className="w-full  flex justify-center items-start mt-10 mb-16">
-      <div className="bg-white w-[850px] grid grid-cols-6 select-none drop-shadow-md">
+      <div className="bg-white w-[850px] grid-rows-1 md:grid-rows-none grid grid-cols-6 select-none drop-shadow-md">
         <div
-          className="bg-blue-300 col-span-3 bg-cover bg-center bg-no-repeat"
+          className="bg-blue-300 hidden md:block  col-span-3 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${image4})`,
           }}
         ></div>
-        <div className="col-span-3 px-8 pt-4 pb-6 font-josefinRegular flex flex-col justify-between text-[#6C757D]">
+        <div className="col-span-6 md:col-span-3 px-5 md:px-8 pt-4 pb-6 font-josefinRegular flex flex-col justify-between text-[#6C757D]">
           <div>
             <div className="w-5">
               <Link to={"/"}>
@@ -71,14 +71,6 @@ const Signup = () => {
               onSubmit={handleSubmit}
               className="flex flex-col mt-4 space-y-2"
             >
-              {/* <div>
-                <p className="text-[#212529] text-sm">Full Name</p>
-                <input
-                  type="text"
-                  className="bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529]"
-                />
-              </div> */}
-
               <div>
                 <label className="text-[#212529] text-xs">Email</label>
                 <input

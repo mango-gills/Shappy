@@ -28,14 +28,14 @@ const Login = () => {
 
   return (
     <div className="w-full flex justify-center mt-10 mb-16">
-      <div className="bg-white w-[850px] h-[500px] grid grid-cols-5 select-none drop-shadow-md">
+      <div className="bg-white w-full md:w-[850px] md:h-[500px] grid grid-rows-1 md:grid-rows-none md:grid-cols-6 select-none drop-shadow-md">
         <div
-          className="bg-blue-300 col-span-3 bg-cover bg-center bg-no-repeat"
+          className="bg-blue-300 row-span-1 col-span-3 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: `url(${image5})`,
           }}
         ></div>
-        <div className="col-span-2 px-8 pt-8 pb-10 font-josefinRegular flex flex-col justify-between text-[#6C757D]">
+        <div className="col-span-3 px-8 pt-8 pb-10 font-josefinRegular flex flex-col justify-between text-[#6C757D]">
           <div>
             <div className="w-5">
               <Link to={"/"}>
@@ -82,8 +82,8 @@ const Login = () => {
             </form>
           </div>
 
-          <p className="text-sm">
-            New here?{" "}
+          <p className="text-sm mt-5 md:mt-0">
+            New here?
             <Link
               to={"/signup"}
               className="text-[#212529] font-JosefinSansSemiBold"
