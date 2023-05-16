@@ -1,4 +1,10 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import {
+  createContext,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+} from "react";
 import { UserAuth } from "./AuthContext";
 
 import {
@@ -18,25 +24,24 @@ export const CartProvider = ({ children }) => {
   const { userId } = UserAuth();
   const onCart = cartData.length;
 
-  if (userId) {
-    const cartRef = collection(db, "cart", userId, "orders");
-
-    onSnapshot(cartRef, (snapshot) => {
-      const cart = [];
-      snapshot.docs.forEach((doc) => {
-        cart.push({ ...doc.data(), id: doc.id });
-      });
-      setCartData(cart);
+  const handleSnapshot = useCallback((snapshot) => {
+    const cart = [];
+    snapshot.docs.forEach((doc) => {
+      cart.push({ ...doc.data(), id: doc.id });
     });
-  }
+    setCartData(cart);
+  }, []);
 
-  // getDocs(cartQuery).then((snapshot) => {
-  //   const cart = [];
-  //   snapshot.docs.forEach((doc) => {
-  //     cart.push({ ...doc.data(), id: doc.id });
-  //   });
-  //   setCartData(cart);
-  // });
+  useEffect(() => {
+    if (userId) {
+      const cartRef = collection(db, "cart", userId, "orders");
+      const unsubscribe = onSnapshot(cartRef, handleSnapshot);
+
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [userId, handleSnapshot]);
 
   return (
     <CartContext.Provider value={{ cartData, onCart }}>
