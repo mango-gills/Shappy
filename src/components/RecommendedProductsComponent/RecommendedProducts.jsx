@@ -33,21 +33,11 @@ const RecommendedProducts = ({ params }) => {
           role="status"
         ></div>
       ) : (
-        <Swiper
-          slidesPerView={isMobile ? 2 : 6}
-          // spaceBetween={20}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[]}
-          className="flex justify-between items-center mb-3 py-2"
-        >
+        <div className="flex flex-wrap gap-4 justify-between items-center mb-3 py-2">
           {shuffledItems?.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductsCard items={product} />
-            </SwiperSlide>
+            <ProductsCard items={product} />
           ))}
-        </Swiper>
+        </div>
       )}
     </>
   );
