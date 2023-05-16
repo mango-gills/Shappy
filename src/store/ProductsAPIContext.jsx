@@ -20,7 +20,7 @@ const ProductProvider = ({ children }) => {
       let randIndex = Math.floor(Math.random() * (i + 1));
       [arr[randIndex], arr[i]] = [arr[i], arr[randIndex]];
     }
-    return arr.slice(0, 8);
+    return arr.slice(0, 10);
   };
 
   useEffect(() => {
