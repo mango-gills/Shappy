@@ -45,9 +45,9 @@ const Navbar = () => {
 
           <div className="flex items-center">
             {/* search bar */}
-            <div className="flex md:border-[1px] border-black/40 justify-between w-[52px] md:w-[500px] rounded-sm overflow-hidden p-1">
+            <div className="flex lg:border-[1px] border-black/40 justify-between w-[52px] lg:w-[400px] xl:w-[500px] rounded-sm overflow-hidden p-1">
               <input
-                className="w-[90%] bg-transparent focus:outline-none ml-2 placeholder:text-sm px-1 hidden md:block"
+                className="w-[90%] bg-transparent focus:outline-none ml-2 placeholder:text-sm px-1 hidden lg:block"
                 type="text"
                 placeholder="Search"
               />
@@ -58,11 +58,11 @@ const Navbar = () => {
             <List
               size={40}
               weight="fill"
-              className="cursor-pointer text-black md:hidden"
+              className="cursor-pointer text-black lg:hidden"
             />
           </div>
 
-          <div className="items-center space-x-6 hidden md:flex">
+          <div className="items-center space-x-6 hidden lg:flex">
             {user ? (
               <>
                 <div className="flex space-x-3">
