@@ -8,7 +8,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full  mx-auto bg-[#161616]  text-black pt-5">
+    <footer className="w-full  mx-auto bg-[#161616]  text-black md:pt-5">
       <div className="mx-auto w-full lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px]">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between">
           <div className="footer-links my-6 flex items-start px-5 lg:px-0 space-x-6 pb-2 text-white">
