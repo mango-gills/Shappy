@@ -4,7 +4,7 @@ import { FeaturedProductsContext } from "../../store/ProductsAPIContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
-import ProductDetails from "../ProductDetails";
+import ProductsCard from "../ProductsCard";
 import { ResizeHandler } from "../../store/ResizeHandlerProvider";
 
 const RecommendedProducts = ({ params }) => {
@@ -44,7 +44,7 @@ const RecommendedProducts = ({ params }) => {
         >
           {shuffledItems?.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductDetails items={product} />
+              <ProductsCard items={product} />
             </SwiperSlide>
           ))}
         </Swiper>

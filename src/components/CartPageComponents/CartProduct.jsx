@@ -27,8 +27,8 @@ const CartProduct = ({ cart }) => {
 
   return (
     <div className="flex items-start justify-between border-t-[1px] py-6 last:border-b-[1px]">
-      <div className="flex items-start">
-        <div className="image-container w-[140px] h-[140px] bg-gray-100 rounded-sm ">
+      <div className="flex items-start ">
+        <div className="image-container w-[70px] h-[70px] md:w-[140px] md:h-[140px] bg-gray-100 rounded-sm ">
           <div
             className="w-[90%] h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
             style={{ backgroundImage: `url(${cart.item.image})` }}
@@ -37,32 +37,37 @@ const CartProduct = ({ cart }) => {
         </div>
 
         <div className="ml-3">
-          <h1 className="w-[180px] text-xs font-josefinBold text-black/80">
+          <h1 className="w-[120px] sm:w-[180px] text-[10px] sm:text-xs font-josefinBold text-black/80">
             {cart.item.title}
           </h1>
-          <p>${cart.item.price}</p>
+          <p className="text-sm sm:text-base">${cart.item.price}</p>
         </div>
       </div>
 
-      <select
-        defaultValue={cart.quantity}
-        value={cart.item.quantity}
-        id="quantity"
-        className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
-        onChange={(choice) => handleQuantityChange(choice, cart.id)}
+      <div
+        className="flex items-center space-x-2
+      "
       >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+        <select
+          defaultValue={cart.quantity}
+          value={cart.item.quantity}
+          id="quantity"
+          className="bg-gray-50 border max-w-[50px] h-[30px] border-gray-300 text-gray-900 text-xs rounded-md block w-full text-center"
+          onChange={(choice) => handleQuantityChange(choice, cart.id)}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
 
-      <X
-        size={18}
-        className="cursor-pointer opacity-60"
-        onClick={() => handleDelete(cart.id)}
-      />
+        <X
+          size={30}
+          className="cursor-pointer opacity-60"
+          onClick={() => handleDelete(cart.id)}
+        />
+      </div>
     </div>
   );
 };

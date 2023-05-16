@@ -1,5 +1,5 @@
 import { FeaturedDealsContext } from "../store/ProductsAPIContext";
-import ProductDeals from "./ProductDeals";
+import ProductsCard from "./ProductsCard";
 import React from "react";
 import { useContext } from "react";
 
@@ -14,7 +14,7 @@ const FeaturedDeals = () => {
 
       <div className="flex overflow-x-scroll scrollbar-hide justify-between">
         {featuredDeals?.map((product) => (
-          <ProductDeals key={product.id} items={product} />
+          <ProductsCard key={product.id} items={product} />
         ))}
       </div>
     </div>
