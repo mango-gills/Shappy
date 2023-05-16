@@ -10,11 +10,11 @@ const Footer = () => {
           <FooterLinksComponent />
           <FooterNewsletter />
         </div>
-        <hr className="my-2" />
-        <div className="footer-text-info flex flex-col-reverse items-center justify-between p-4 text-center font-normal text-white">
+        <hr className="my-4" />
+        <div className="footer-text-info flex flex-col-reverse md:flex-row  justify-between items-center pb-5 text-center font-normal text-white">
           <p>© 2023 Shappy. All Rights Reserved.</p>
-          <div className="payment-info flex flex-col items-center pb-4">
-            <p>We accept the following payment methods.</p>
+          <div className="payment-info flex  items-center">
+            <p className="text-sm md:text-base">Payment Methods.</p>
             <img
               src="https://cdn.shopify.com/s/files/1/0442/2749/4055/files/payments.png?v=1622516543"
               className="h-8"
