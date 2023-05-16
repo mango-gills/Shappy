@@ -6,7 +6,7 @@ import "swiper/swiper-bundle.min.css";
 import { CaretCircleLeft, CaretCircleRight } from "phosphor-react";
 import { ResizeHandler } from "../../store/ResizeHandlerProvider";
 
-import ProductDetails from "../ProductDetails";
+import ProductsCard from "../ProductsCard";
 
 const BestSellerComponent = () => {
   const { bestSellers, isLoading } = useContext(FeaturedProductsContext);
@@ -58,7 +58,7 @@ const BestSellerComponent = () => {
         >
           {bestSellers?.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductDetails items={product} />
+              <ProductsCard items={product} />
             </SwiperSlide>
           ))}
         </Swiper>

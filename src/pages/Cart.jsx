@@ -42,81 +42,79 @@ const Cart = () => {
   };
 
   return (
-    <>
-      <div className="2xl:max-w-[1280px] mx-auto py-5 w-full px-5">
-        <h1 className="mb-5 text-3xl font-josefinBold">
-          Your Shopping Cart has {cartData.length} items.
-        </h1>
+    <div className="2xl:max-w-[1280px] mx-auto py-5 w-full px-5 min-h-[500px]">
+      <h1 className="mb-5 text-3xl font-josefinBold">
+        Your Shopping Cart has {cartData.length} items.
+      </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3">
-          <div className="w-[500px] col-span-2">
-            {cartData?.map((cart) => (
-              <CartProduct key={cart.id} cart={cart} />
-            ))}
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="w-full lg:w-[500px] col-span-2 md:pr-2">
+          {cartData?.map((cart) => (
+            <CartProduct key={cart.id} cart={cart} />
+          ))}
+        </div>
+
+        <div className="col-span-1">
+          <h1 className="text-2xl font-semibold mb-2 border-b-2 border-black/90 pb-2">
+            Order Summary
+          </h1>
+
+          <div className="space-y-3">
+            <div className="text-xl flex justify-between">
+              <h2>Subtotal:</h2>
+              <p>${totalPayment.toFixed(2)}</p>
+            </div>
+
+            <div className="text-xl flex justify-between">
+              <h2>Shipping Fee:</h2>
+              <p>{shippingFee <= 0 ? "FREE" : `$${shippingFee}.00`}</p>
+            </div>
+
+            <div className="text-xl flex justify-between font-bold border-t-[1px] border-black/90 pt-2">
+              <h2>Total:</h2>
+              <p>${(totalPayment + shippingFee).toFixed(2)}</p>
+            </div>
           </div>
 
-          <div className="col-span-1">
-            <h1 className="text-2xl font-semibold mb-2 border-b-2 border-black/90 pb-2">
-              Order Summary
-            </h1>
-
-            <div className="space-y-3">
-              <div className="text-xl flex justify-between">
-                <h2>Subtotal:</h2>
-                <p>${totalPayment.toFixed(2)}</p>
-              </div>
-
-              <div className="text-xl flex justify-between">
-                <h2>Shipping Fee:</h2>
-                <p>{shippingFee <= 0 ? "FREE" : `$${shippingFee}.00`}</p>
-              </div>
-
-              <div className="text-xl flex justify-between font-bold border-t-[1px] border-black/90 pt-2">
-                <h2>Total:</h2>
-                <p>${(totalPayment + shippingFee).toFixed(2)}</p>
-              </div>
-            </div>
-
-            <button
-              className={`${
-                checkout ? "hidden" : ""
-              } bg-black/80 text-white text-xl py-4 mt-6 w-full hover:bg-black/95`}
-              onClick={handleCheckout}
+          <button
+            className={`${
+              checkout ? "hidden" : ""
+            } bg-black/80 text-white text-xl py-4 mt-6 w-full hover:bg-black/95`}
+            onClick={handleCheckout}
+          >
+            Checkout
+          </button>
+          <div className={`${checkout ? "" : "hidden"} mt-2`}>
+            <PayPalScriptProvider
+              options={{ "client-id": import.meta.env.VITE_CLIENT_ID }}
             >
-              Checkout
-            </button>
-            <div className={`${checkout ? "" : "hidden"} mt-2`}>
-              <PayPalScriptProvider
-                options={{ "client-id": import.meta.env.VITE_CLIENT_ID }}
-              >
-                <PayPalButtons
-                  createOrder={(data, actions) => {
-                    return actions.order.create({
-                      purchase_units: [
-                        {
-                          amount: {
-                            value: totalPayment,
-                          },
+              <PayPalButtons
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: totalPayment,
                         },
-                      ],
-                    });
-                  }}
-                  onApprove={(data, actions) => {
-                    return actions.order.capture().then(function (details) {
-                      deleteOrder();
-                      // alert(
-                      //   "Transaction completed by " +
-                      //     details.payer.name.given_name
-                      // );
-                    });
-                  }}
-                />
-              </PayPalScriptProvider>
-            </div>
+                      },
+                    ],
+                  });
+                }}
+                onApprove={(data, actions) => {
+                  return actions.order.capture().then(function (details) {
+                    deleteOrder();
+                    // alert(
+                    //   "Transaction completed by " +
+                    //     details.payer.name.given_name
+                    // );
+                  });
+                }}
+              />
+            </PayPalScriptProvider>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

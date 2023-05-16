@@ -1,7 +1,7 @@
 import { FeaturedProductsContext } from "../store/ProductsAPIContext";
 import React, { useState, useContext } from "react";
 
-import ProductDetails from "./ProductDetails";
+import ProductsCard from "./ProductsCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -59,7 +59,7 @@ const FeaturedProductsComponent = () => {
         >
           {featuredList?.map((product) => (
             <SwiperSlide key={product.id}>
-              <ProductDetails items={product} />
+              <ProductsCard items={product} />
             </SwiperSlide>
           ))}
         </Swiper>
