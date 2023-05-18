@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FeaturedProductsContext } from "../../store/ProductsAPIContext";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 import ProductsCard from "../ProductsCard";
-import { ResizeHandler } from "../../store/ResizeHandlerProvider";
 
 const RecommendedProducts = ({ params }) => {
   const [shuffledItems, setShuffledItems] = useState([]);
@@ -13,7 +11,6 @@ const RecommendedProducts = ({ params }) => {
   const { recommendedList, fyShuffle, isLoading } = useContext(
     FeaturedProductsContext
   );
-  const { isMobile } = ResizeHandler();
 
   useEffect(() => {
     setTimeout(() => {
@@ -35,7 +32,7 @@ const RecommendedProducts = ({ params }) => {
       ) : (
         <div className="flex flex-wrap gap-4 justify-between items-center mb-3 py-2">
           {shuffledItems?.map((product) => (
-            <ProductsCard items={product} />
+            <ProductsCard items={product} key={product.id} />
           ))}
         </div>
       )}
