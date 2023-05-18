@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import AddToCart from "./AddToCart";
-import RecommendedProducts from "../RecommendedProductsComponent/RecommendedProducts";
+import RecommendedProducts from "../ProductsCarouselComponent/RecommendedProducts";
 
 const ProductPageItemDetails = () => {
   const [item, setItem] = useState([]);
