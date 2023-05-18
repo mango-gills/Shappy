@@ -1,5 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import React, { useRef, useState } from "react";
 
 import { ArrowLeft } from "phosphor-react";
 import image4 from "../assets/image4.webp";
@@ -10,37 +10,38 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
-  const [error, setError] = useState("");
   const [recaptchaSuccess, setReCaptchaSuccess] = useState(false);
+  const [passwordMismatch, setPasswordMismatch] = useState(false);
+  const [resetCaptcha, setResetCaptcha] = useState(false);
 
-  const { createUser } = UserAuth();
-  const navigate = useNavigate();
+  const { createUser, authError, setAuthError } = UserAuth();
+  const captcha = useRef(null);
 
   const captchaSuccess = () => {
     setReCaptchaSuccess(true);
-    console.log(recaptchaSuccess);
+  };
+
+  const btnResetCaptcha = (e) => {
+    e.preventDefault();
+    captcha.current.reset();
+
+    setResetCaptcha(false);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
 
-    try {
-      if (password === verifyPassword) {
-        await createUser(email, password);
-        navigate("/");
-      } else {
-        setError("Passwords do not match.");
-        console.log(error);
-
-        // reset password error
-        setTimeout(() => {
-          setError("");
-        }, 3000);
-      }
-    } catch (e) {
-      setError(e.message);
+    if (password !== verifyPassword) {
+      setPasswordMismatch(true);
+    } else {
+      await createUser(email, password);
     }
+
+    // reset password error
+    setTimeout(() => {
+      setAuthError("");
+      setPasswordMismatch("");
+    }, 5000);
   };
 
   return (
@@ -71,42 +72,74 @@ const Signup = () => {
               onSubmit={handleSubmit}
               className="flex flex-col mt-4 space-y-2"
             >
-              <div>
+              <div className="relative">
                 <label className="text-[#212529] text-xs">Email</label>
                 <input
                   type="email"
-                  className="bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529]"
+                  className={`${
+                    authError == "email-error" ? " border-red-500 border" : ""
+                  } bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529] transition duration-200 ease-in`}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
+                {authError == "email-error" && (
+                  <p className="text-xs absolute -bottom-5 text-red-500">
+                    Email already exists
+                  </p>
+                )}
               </div>
 
               <div className="py-2">
                 <label className="text-[#212529] text-xs">Password</label>
                 <input
                   type="password"
-                  className="bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529]"
+                  className={` ${
+                    authError == "weak-password" || passwordMismatch
+                      ? " border-red-500 border"
+                      : ""
+                  } bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529]`}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 
-              <div>
+              <div className="relative">
                 <label className="text-[#212529] text-xs">
                   Confirm Password
                 </label>
                 <input
                   type="password"
-                  className="bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529]"
+                  className={`${
+                    authError == "weak-password" || passwordMismatch
+                      ? " border-red-500 border"
+                      : ""
+                  } bg-[#E9ECEF] px-2 py-1 w-full drop-shadow-md text-[#212529]`}
                   onChange={(e) => setVerifyPassword(e.target.value)}
                 />
+                {authError == "weak-password" && (
+                  <p className="text-xs absolute -bottom-5 text-red-500">
+                    Password must be more than 6 characters
+                  </p>
+                )}
+
+                {passwordMismatch && (
+                  <p className="text-xs absolute -bottom-5 text-red-500">
+                    Passwords do not match
+                  </p>
+                )}
               </div>
 
               <div className="mx-auto pt-5">
                 <RECAPTCHA
+                  ref={captcha}
                   sitekey={import.meta.env.VITE_CAPTCHA_SITE_KEY}
                   onChange={captchaSuccess}
                   id="reCAPTCHA"
+                  onExpired={() => setResetCaptcha(true)}
+                  className={`${resetCaptcha ? "hidden" : ""}`}
                 />
+                {resetCaptcha && (
+                  <button onClick={btnResetCaptcha}>Reset</button>
+                )}
               </div>
 
               <div className="pt-4 space-y-2 text-center">
