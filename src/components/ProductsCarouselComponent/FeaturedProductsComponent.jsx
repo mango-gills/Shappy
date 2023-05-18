@@ -1,17 +1,16 @@
-import { FeaturedProductsContext } from "../store/ProductsAPIContext";
+import { FeaturedProductsContext } from "../../store/ProductsAPIContext";
 import React, { useState, useContext } from "react";
 
-import ProductsCard from "./ProductsCard";
+import ProductsCard from "../ProductsCard";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 
 import { CaretCircleLeft, CaretCircleRight } from "phosphor-react";
-import { ResizeHandler } from "../store/ResizeHandlerProvider";
+import ProductsCarousel from "./ProductsCarousel";
 
 const FeaturedProductsComponent = () => {
   const { featuredList, isLoading } = useContext(FeaturedProductsContext);
-  const { isMobile } = ResizeHandler();
 
   const [swiperRef, setSwiperRef] = useState(null);
 
@@ -41,29 +40,11 @@ const FeaturedProductsComponent = () => {
         </div>
       </div>
 
-      {isLoading ? (
-        <div
-          className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        ></div>
-      ) : (
-        <Swiper
-          slidesPerView={isMobile ? 2 : 6}
-          // spaceBetween={20}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[]}
-          onSwiper={(swiper) => setSwiperRef(swiper)}
-          className="flex justify-between items-center mb-3 py-2"
-        >
-          {featuredList?.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductsCard items={product} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+      <ProductsCarousel
+        isLoading={isLoading}
+        data={featuredList}
+        setSwiperRef={setSwiperRef}
+      />
     </>
   );
 };

@@ -1,9 +1,7 @@
-import { ProductProvider } from "../store/ProductsAPIContext";
-
-import FeaturedImage from "../components/FeaturedImage";
-import FeaturedProducts from "../components/FeaturedProductsComponent";
 import React from "react";
-import BestSellerComponent from "../components/BestSellersComponent/BestSellerComponent";
+import FeaturedImage from "../components/FeaturedImage";
+import FeaturedProducts from "../components/ProductsCarouselComponent/FeaturedProductsComponent";
+import BestSellerComponent from "../components/ProductsCarouselComponent/BestSellerComponent";
 
 const Home = () => {
   return (
