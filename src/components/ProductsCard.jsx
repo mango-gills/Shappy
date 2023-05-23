@@ -6,10 +6,10 @@ const ProductsCard = ({ items }) => {
 
   return (
     <Link to={`/product/${id}`}>
-      <div className="w-[160px] h-[240px] md:w-[205px] md:h-[290px] bg-white font-josefinRegular mx-auto cursor-pointer flex flex-col items-center ease-in duration-75 border hover:border-[#ff2424] hover:shadow-lg hover:border-[1px]">
-        <div className="image-container my-4 w-[170px] h-[170px]">
+      <div className="w-[160px] h-[230px] md:w-[205px] md:h-[270px] bg-white font-josefinRegular mx-auto cursor-pointer flex flex-col items-center ease-in duration-75 border hover:border-neutral-500 hover:shadow-lg hover:border-[1px]">
+        <div className="image-container w-full px-4 py-6 bg-neutral-200 mb-4">
           <div
-            className="w-[80%] h-[80%] md:w-[90%] md:h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
+            className="w-[90px] h-[90px] md:w-[120px] md:h-[120px] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
             style={{ backgroundImage: `url(${image})` }}
             alt="product-image"
           />
@@ -23,11 +23,11 @@ const ProductsCard = ({ items }) => {
               {title}
             </h2>
 
-            <div className="flex space-x-1 justify-between items-center">
-              <p className="text-orange-600 text-base md:text-lg font-medium">
-                ${price}
+            <div className="flex space-x-1 justify-between items-center mb-2 sm:mb-0">
+              <p className="text-orange-500 font-medium">
+                $<span className="text-base md:text-lg">{price}</span>
               </p>
-              <span className="text-neutral-800 flex text-[12px] md:text-sm">
+              <span className="text-neutral-500 flex text-[10px] md:text-xs">
                 Sold ({rating.count})
               </span>
             </div>
