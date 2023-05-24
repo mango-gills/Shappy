@@ -4,7 +4,7 @@ import FooterNewsletter from "./FooterNewsletter";
 
 const Footer = () => {
   return (
-    <footer className="w-full  mx-auto bg-[#161616]  text-black md:pt-24 md:pb-12">
+    <footer className="w-full  mx-auto bg-[#161616]  text-black md:pt-20 md:pb-8">
       <div className="mx-auto w-full lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px]">
         <div className="flex flex-col-reverse md:flex-row items-start justify-between">
           <FooterLinksComponent />
