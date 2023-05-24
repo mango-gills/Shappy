@@ -30,7 +30,7 @@ const RecommendedProducts = ({ params }) => {
           role="status"
         ></div>
       ) : (
-        <div className="flex flex-wrap gap-4 justify-between items-center mb-3 py-2">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-y-2 justify-between items-center mb-3 py-2">
           {shuffledItems?.map((product) => (
             <ProductsCard items={product} key={product.id} />
           ))}

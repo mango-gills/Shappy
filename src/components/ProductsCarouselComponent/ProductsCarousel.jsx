@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
@@ -36,7 +36,6 @@ const ProductsCarousel = (props) => {
       ) : (
         <Swiper
           slidesPerView={slidesPerView}
-          // spaceBetween={20}
           pagination={{
             clickable: true,
           }}
