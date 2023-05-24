@@ -81,6 +81,7 @@ const Cart = () => {
               checkout ? "hidden" : ""
             } bg-black/80 text-white text-xl py-4 mt-6 w-full hover:bg-black/95`}
             onClick={handleCheckout}
+            disabled={cartData.length <= 0 ? true : false}
           >
             Checkout
           </button>
