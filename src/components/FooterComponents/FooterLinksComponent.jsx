@@ -8,7 +8,7 @@ import {
 
 const FooterLinksComponent = () => {
   return (
-    <div className="footer-links my-6 flex items-start px-5 lg:px-0 space-x-6 pb-2 text-white">
+    <div className="footer-links my-6 flex items-start px-5 lg:px-0 lg:my-0 space-x-6 pb-2 text-white">
       <div className="customer-service">
         <h1 className="mb-1 font-bold">Customer Service</h1>
         <ul className="space-y-2 font-light text-sm md:text-base">
