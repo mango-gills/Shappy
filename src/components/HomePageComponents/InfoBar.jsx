@@ -3,7 +3,7 @@ import truckIcon from "../../assets/truck.svg";
 import creditCardIcon from "../../assets/credit-card.svg";
 import envelopeIcon from "../../assets/envelope.svg";
 import tagIcon from "../../assets/tag.svg";
-import InfoBarItem from "./infoBarItem";
+import InfoBarItem from "./InfoBarItem";
 
 const InfoBar = () => {
   const infoBarData = [
