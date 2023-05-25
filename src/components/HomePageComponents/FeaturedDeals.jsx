@@ -1,5 +1,5 @@
-import { FeaturedDealsContext } from "../store/ProductsAPIContext";
-import ProductsCard from "./ProductsCard";
+import { FeaturedDealsContext } from "../../store/ProductsAPIContext";
+import ProductsCard from "../ProductsCard";
 import React from "react";
 import { useContext } from "react";
 
