@@ -1,7 +1,7 @@
 import React from "react";
-import gamestation5 from "../assets/gamestation5.webp";
-import hyperdrive from "../assets/hyperdrive.webp";
-import headphones from "../assets/headphones.webp";
+import gamestation5 from "../../assets/gamestation5.webp";
+import hyperdrive from "../../assets/hyperdrive.webp";
+import headphones from "../../assets/headphones.webp";
 
 const DailyDeals = () => {
   return (
