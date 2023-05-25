@@ -4,6 +4,7 @@ import FeaturedProducts from "../components/ProductsCarouselComponent/FeaturedPr
 import BestSellerComponent from "../components/ProductsCarouselComponent/BestSellerComponent";
 import DailyDeals from "../components/HomePageComponents/DailyDeals";
 import InfoBar from "../components/HomePageComponents/InfoBar";
+import CategoryComponent from "../components/HomePageComponents/CategoryComponent";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <BestSellerComponent />
       <DailyDeals />
       <InfoBar />
+      <CategoryComponent />
     </>
   );
 };
