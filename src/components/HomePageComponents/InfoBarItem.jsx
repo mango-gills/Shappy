@@ -1,6 +1,6 @@
 import React from "react";
 
-const InfoBarItem = () => {
+const InfoBarItem = ({ item }) => {
   return (
     <div className="flex items-center space-x-2 col-span-1">
       <div className="bg-[#F3E1E1] rounded-full p-3">
