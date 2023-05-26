@@ -7,7 +7,7 @@ const ProductPageItemDetails = () => {
   const [item, setItem] = useState([]);
 
   const params = useParams();
-  const { title, image, price, id, description, category } = item;
+  const { title, image, price, id, description, category, rating } = item;
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${params.id}`)
@@ -34,36 +34,36 @@ const ProductPageItemDetails = () => {
             <span> &gt;</span>
             <p className="text-neutral-500">{title}</p>
           </div>
-          <div className="bg-[#DFDFDF] max-w-[950px] md:h-[550px] grid md:grid-cols-2 drop-shadow-md">
+          <div className="bg-[#DFDFDF] w-full md:h-[550px] grid md:grid-cols-2 drop-shadow-md">
             <div className="h-[350px] md:h-full w-full overflow-hidden flex justify-center items-center">
               <img
                 src={image}
                 alt="product-image"
-                className="mx-auto mix-blend-multiply w-[90%] h-[90%] md:w-[80%] md:h-[80%] object-contain"
+                className="mx-auto mix-blend-multiply w-[90%] h-[90%] md:w-[70%] md:h-[70%] object-contain"
               />
             </div>
 
             <div className="bg-white w-full py-6 px-8 h-full flex flex-col justify-between">
               <div className="h-full md:h-[250px] overflow-hidden mb-2">
                 <p className="uppercase text-gray-500 my-1 text-xs md:text-sm">
-                  {category}
+                  {category == "jewelery" ? "jewelry" : category}
                 </p>
-                <h1 className="text-lg md:text-xl mt-2 font-JosefinSansSemiBold text-[#303030]">
+                <h1 className="text-lg md:text-xl lg:text-2xl mt-2 font-JosefinSansSemiBold text-[#303030]">
                   {title}
                 </h1>
 
-                <h1 className="text-2xl mt-3 font-JosefinSansSemiBold text-orange-500">
+                <h1 className="text-2xl md:text-3xl mt-3 font-JosefinSansSemiBold text-orange-500">
                   ${price}
                 </h1>
 
-                <p className="text-[11px] md:text-xs text-[#4A4A4A]/80 mt-2 leading-relaxed">
+                <p className="text-sm md:text-base text-[#4A4A4A]/80 mt-2 leading-relaxed">
                   {description}
                 </p>
               </div>
 
-              <div className="font-josefinRegular text-lg items-end space-y-4">
+              <div className="font-josefinRegular text-lg flex flex-col md:flex-row md:space-x-3 items-center space-y-3 md:space-y-0">
                 <AddToCart item={item} />
-                <button className="text-[#2b2b2b] border-[1px] border-gray-400 px-8 py-2 w-full rounded-sm">
+                <button className="text-[#2b2b2b] border-[1px] border-gray-400 w-full md:w-1/2 px-8 py-4 rounded-sm leading-none">
                   Save to Wishlist
                 </button>
               </div>
