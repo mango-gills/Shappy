@@ -43,7 +43,7 @@ const AddToCart = ({ item }) => {
 
   return (
     <button
-      className="bg-[#2b2b2b] text-white px-8 py-2 w-full rounded-sm"
+      className="bg-[#2b2b2b] hover:bg-[#202020] w-full md:w-1/2 text-white px-8 py-4 leading-none rounded-sm"
       onClick={handleAddToCart}
     >
       Add to Cart
