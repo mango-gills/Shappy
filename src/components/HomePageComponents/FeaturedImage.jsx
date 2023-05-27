@@ -11,7 +11,7 @@ import { Pagination, Autoplay } from "swiper";
 
 const FeaturedImage = () => {
   return (
-    <div className="main-grid w-full h-[200px] sm:h-[280px] md:h-[380px] xl:h-[450px] grid gap-3">
+    <div className="main-grid w-full h-[200px] sm:h-[280px] md:h-[380px] lg:h-[450px] 2xl:h-[500px] grid gap-3">
       <Swiper
         slidesPerView={1}
         loop={true}

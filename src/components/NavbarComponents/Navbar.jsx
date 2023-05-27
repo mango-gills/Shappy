@@ -27,8 +27,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="w-full border-b-2 border-neutral-300 drop-shadow-sm px-5 lg:px-0 relative z-20">
-      <div className="pt-6 pb-2 w-full lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px] mx-auto text-[#7A7A7A]">
+    <nav className="w-full drop-shadow-sm px-5 lg:px-0 relative z-20">
+      <div className="pt-10 pb-6 w-full lg:max-w-[1000px] xl:max-w-[1100px] 2xl:max-w-[1280px] mx-auto text-[#7A7A7A]">
         <div className="flex items-center justify-between">
           <Link to={"/"} className="flex items-center w-[125px] sm:w-[180px]">
             <div>
