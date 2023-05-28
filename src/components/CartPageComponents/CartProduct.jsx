@@ -28,7 +28,7 @@ const CartProduct = ({ cart }) => {
   return (
     <div className="flex items-start justify-between border-t-[1px] py-6 last:border-b-[1px]">
       <div className="flex items-start ">
-        <div className="image-container w-[70px] h-[70px] md:w-[140px] md:h-[140px] bg-gray-100 rounded-sm ">
+        <div className="image-container w-[70px] h-[70px] md:w-[140px] md:h-[140px] bg-gray-100 rounded-sm border p-1">
           <div
             className="w-[90%] h-[90%] bg-contain bg-no-repeat mix-blend-multiply bg-center mx-auto"
             style={{ backgroundImage: `url(${cart.item.image})` }}
@@ -37,10 +37,12 @@ const CartProduct = ({ cart }) => {
         </div>
 
         <div className="ml-3">
-          <h1 className="w-[120px] sm:w-[180px] text-[10px] sm:text-xs font-josefinBold text-black/80">
+          <h1 className="w-[120px] sm:w-[180px] lg:w-[240px] text-[10px] sm:text-xs lg:text-base font-semibold text-black/90">
             {cart.item.title}
           </h1>
-          <p className="text-sm sm:text-base">${cart.item.price}</p>
+          <p className="text-sm sm:text-base lg:text-lg mt-3 font-bold">
+            ${cart.item.price}
+          </p>
         </div>
       </div>
 
