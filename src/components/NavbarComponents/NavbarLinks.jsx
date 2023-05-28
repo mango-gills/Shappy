@@ -36,8 +36,8 @@ const NavbarLinks = ({ isMenuOpen, setMenuIsOpen }) => {
             >
               <Link to={"/cart"} className="relative flex items-center">
                 {onCart > 0 && (
-                  <div className="absolute -top-1 left-5 bg-green-500/90 rounded-full h-3 w-3 md:h-5 md:w-5 text-white flex items-center justify-center p-2">
-                    <p className="text-[10px] md:text-xs font-bold">{onCart}</p>
+                  <div className="absolute -top-1 left-5 bg-green-500/90 rounded-full h-3 w-3 md:h-4 md:w-4 text-white flex items-center justify-center p-2">
+                    <p className="text-[10px] font-bold">{onCart}</p>
                   </div>
                 )}
                 <ShoppingCartSimple size={30} />
