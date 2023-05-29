@@ -30,7 +30,7 @@ const InfoBar = () => {
   ];
 
   return (
-    <div className="my-10 w-full grid grid-cols-1 sm:grid-cols-2 lg:flex justify-between gap-y-4">
+    <div className="my-10 w-full grid grid-cols-1 sm:grid-cols-2 lg:flex justify-between gap-y-8 md:gap-y-4">
       {infoBarData.map((item, index) => (
         <InfoBarItem item={item} />
       ))}
